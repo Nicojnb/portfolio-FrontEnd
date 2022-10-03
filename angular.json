@@ -24,10 +24,10 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/dist/bootstrap-5.2.0-dist/css/bootstrap.css"
+              "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": [
-              "src/dist/bootstrap-5.2.0-dist/js/bootstrap.bundle.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
             ]
           },
           "configurations": {
@@ -97,6 +97,9 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
