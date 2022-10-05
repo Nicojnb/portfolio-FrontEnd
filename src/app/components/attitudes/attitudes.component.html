@@ -1,1 +1,11 @@
-<p>attitudes works!</p>
+<div class="card mat-card">
+    <div class="card-titles">
+        <h2>Habilidades Blandas</h2>
+        <div class="btn-edit"></div>
+    </div>
+    <div >
+        <p *ngFor="let attitude of attitudes">
+            {{attitude.name}} {{attitude.description}} {{attitude.percent}}
+        </p>
+    </div> 
+</div>

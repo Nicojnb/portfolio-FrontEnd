@@ -1,24 +1,17 @@
 <div class="sticky-top">
-<div class="container-fluid" id="header">
-    <div class="row">
-        <div class="col" id="name">Nicolás Bautista</div>
-        <div class="col" id="icons">
-            <a class="insta" 
-                href="#">
-                <Title>Instagram</Title>
-                <fa-icon [icon]="iconInsta" ></fa-icon>
-            </a>
-            <a class="fb" 
-                href="https://www.facebook.com/nicolas.bautista.16503">
-                <title>Facebook</title>
-                <fa-icon [icon]="iconFB" ></fa-icon>
-            </a>
-            <a class="tw" 
-                href="#">
-                <title>Twitter</title>
-                <fa-icon [icon]="iconTw" ></fa-icon>
-            </a>
+    <div class="container-fluid" id="header">
+        <div class="row">
+            <div class="col" id="name">Nicolás Bautista</div>
+            <div class="col" id="icons">
+                <ng-container *ngFor="let social of socials">
+                    <div *ngIf="(social.url).length > 0">
+                        <a
+                        href="{{social.url}}"><i class="{{social.icon}}"></i>
+                        <Title>"{{social.name}}"</Title>
+                        </a>
+                    </div>
+                </ng-container> 
+            </div>
         </div>
     </div>
-</div>
 </div>

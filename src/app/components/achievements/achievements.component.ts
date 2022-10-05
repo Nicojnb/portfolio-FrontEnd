@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ACHIEVEMENTS } from 'src/app/model/Achievements';
+import { IAchievements } from 'src/app/model/IAchievements';
 
 @Component({
   selector: 'app-achievements',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./achievements.component.css']
 })
 export class AchievementsComponent implements OnInit {
+
+  achievements: IAchievements[] = ACHIEVEMENTS;
 
   constructor() { }
 
