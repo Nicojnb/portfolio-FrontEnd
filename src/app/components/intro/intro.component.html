@@ -2,22 +2,22 @@
     <div id="profile-background"><img src="assets/images/background.png"></div>
     <div id="info" style="padding: 16px">
         <div id="info-img">
-            <img mat-card-image class="profile-image" src="assets/images/yo.jpg" alt="">
+            <img mat-card-image class="profile-image" src="{{attributes.urlImage}}" alt="">
             <div class="btn-edit"><a href="#" class="btn-right"><i class="fa fa-pen"></i></a></div>
         </div>
         <div id="info-data">
             <div>
-                <h1>Nicolás Bautista</h1>
-                <div id="info-company">Estudiante</div>
+                <h1>{{attributes.firstName}} {{attributes.lastName}}</h1>
+                <div id="info-company">{{attributes.prof}}</div>
                 <div id="info-contact">
-                    <span class="h4">Tucumán - Argentina</span>
-                    <span class="h4"><a href="#">Información de contacto</a></span>
+                    <span class="h4">{{attributes.state}} {{attributes.country}}</span>
+                    <span class="h4"><a href="#"> Información de contacto </a></span>
                 </div>
             </div>
             <ul id="info-details">
                 <li><a href="http://www.frt.utn.edu.ar/">
                     <img src="">
-                    <h2>UTN-FRT</h2>
+                    <h2>{{attributes.university}}</h2>
                 </a></li>
             </ul>
         </div>
@@ -26,4 +26,6 @@
             <button type="button" class="btn btn-light">Añadir sección</button>
             <button type="button" class="btn btn-light">Más</button>
     </div>
+    
 </div>
+<app-about [about]="attributes.about" ></app-about>

@@ -3,7 +3,10 @@
         <h2>Experiencia</h2>
         <div class="btn-edit"></div>
     </div>
-    <div>
-        
-    </div>  
+    <div >
+        <p *ngFor="let exp of experience">
+            {{exp.where}} {{exp.role}}
+            {{exp.start}}-{{exp.end}}
+        </p>
+    </div> 
 </div>

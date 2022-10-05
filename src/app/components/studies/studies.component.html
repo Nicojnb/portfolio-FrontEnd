@@ -1,1 +1,12 @@
-<p>studies works!</p>
+<div class="card mat-card">
+    <div class="card-titles">
+        <h2>Estudios</h2>
+        <div class="btn-edit"></div>
+    </div>
+    <div >
+        <p *ngFor="let study of studies">
+            {{study.name}} {{study.title}} {{study.status}}
+            {{study.start}}-{{study.end}}
+        </p>
+    </div> 
+</div>
