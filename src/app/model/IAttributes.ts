@@ -4,6 +4,7 @@ export interface IAttributes{
     lastName: string;
     prof: string;
     urlImage: string;
+    urlBack: string;
     state: string;
     country: string;
     university: string;

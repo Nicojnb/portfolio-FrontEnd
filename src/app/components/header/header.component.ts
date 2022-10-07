@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ISocials } from 'src/app/model/ISocials';
 import { SOCIALS } from 'src/app/model/Socials';
 
@@ -8,6 +8,8 @@ import { SOCIALS } from 'src/app/model/Socials';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  @Input() name: string = "";
 
   socials: ISocials[] = SOCIALS;
 
