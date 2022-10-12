@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ISocials } from 'src/app/model/ISocials';
 import { SOCIALS } from 'src/app/model/Socials';
+import { SocialsService } from 'src/app/services/socials.service';
 
 @Component({
   selector: 'app-header',
@@ -11,11 +12,12 @@ export class HeaderComponent implements OnInit {
 
   @Input() name: string = "";
 
-  socials: ISocials[] = SOCIALS;
+  socials: ISocials[] = [];
 
-  constructor() { }
+  constructor(private socServ: SocialsService) { }
 
   ngOnInit(): void {
+    this.socServ.getSoc().subscribe((value: ISocials[]) => this.socials=value);
   }
 
 }

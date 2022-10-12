@@ -10,6 +10,7 @@
 div#profile-background{
     display: flex;
     z-index: 1;
+    height: 250px;
 }
 
 div#profile-background img{
@@ -91,3 +92,5 @@ ul.items-list li div.data-container a{
     display: flex;
     color: black;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
