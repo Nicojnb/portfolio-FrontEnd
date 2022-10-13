@@ -11,6 +11,8 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { AttitudesComponent } from './components/attitudes/attitudes.component';
 import { StudiesComponent } from './components/studies/studies.component';
 import { AchievementsComponent } from './components/achievements/achievements.component';
+import { LoginComponent } from './components/login/login.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { AchievementsComponent } from './components/achievements/achievements.co
     ExperienceComponent,
     AttitudesComponent,
     StudiesComponent,
-    AchievementsComponent
+    AchievementsComponent,
+    LoginComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
