@@ -1,4 +1,4 @@
-import { IStudies } from "./IStudies";
+import { IStudies } from "src/app/model/IStudies"
 
 export const STUDIES: IStudies[] = [
     {

@@ -1,12 +1,42 @@
 <div class="card mat-card">
     <div class="card-titles">
-        <h2>Experiencia</h2>
-        <div class="btn-edit"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col text-left">
+                    <h2>Experiencia</h2>
+                </div>
+                <div class="col text-right">
+                    <div class="btn-add">
+                        <a href="portfolio#form" class="" (click)="changeState()"><i class="fa fa-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div name="form">
+                <div *ngIf="showForm">
+                    <div *ngIf="outExperience.id; else elseBlock">Modificar</div>
+                    <ng-template #elseBlock>Agregar</ng-template>
+                    <app-experience-form
+                        [exp]="outExperience"
+                        (expChange)="update(outExperience)"
+                    ></app-experience-form>
+                </div>
+            </div> 
+            <div >
+                <div class="row" *ngFor="let exp of experience">
+                    <div class="col text-left">
+                        <p>
+                            {{exp.where}} {{exp.role}}
+                            {{exp.start}}-{{exp.end}}
+                        </p>
+                    </div>
+                    <div class="col text-right">
+                    <div class="btn-edit">
+                        <a href="portfolio#form" class="btn-right" (click)="edit(exp)"><i class="fa fa-pen"></i></a>
+                    </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        
     </div>
-    <div >
-        <p *ngFor="let exp of experience">
-            {{exp.where}} {{exp.role}}
-            {{exp.start}}-{{exp.end}}
-        </p>
-    </div> 
 </div>

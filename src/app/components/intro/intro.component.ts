@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ATTRIBUTES } from 'src/app/model/Attributes';
+import { of } from 'rxjs';
 import { IAttributes } from 'src/app/model/IAttributes';
+import { AttribService } from 'src/app/services/attrib.service';
+import { ATTRIBUTES } from 'src/assets/data/Attributes';
 
 @Component({
   selector: 'app-intro',
@@ -9,11 +11,23 @@ import { IAttributes } from 'src/app/model/IAttributes';
 })
 export class IntroComponent implements OnInit {
 
-  attributes: IAttributes = ATTRIBUTES[0];
+  attributes: IAttributes = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    prof: '',
+    urlImage: '',
+    urlBack: '',
+    state: '',
+    country: '',
+    university: '',
+    about: ''
+  };
 
-  constructor() { }
+  constructor(private attribServ: AttribService) { }
 
   ngOnInit(): void {
+    this.attribServ.getAttrib().subscribe((value: IAttributes) => this.attributes = value);
   }
 
 }

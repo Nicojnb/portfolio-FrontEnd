@@ -1,9 +1,31 @@
 <div class="card mat-card">
     <div class="card-titles">
-        <h2>Acerca de mí</h2>
-        <div class="btn-edit"></div>
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col text-left">
+                    <h2>Acerca de mí</h2>
+              </div>
+              <div class="col text-right">
+                <div class="btn-edit" onclick="editAbout()">
+                    <button class="" (click)="changeState()"><i class="fa fa-pen"></i></button>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="showForm; else elseBlock">{{about}}</div>
+            <ng-template #elseBlock>
+                <form action="">
+                    <div class="row">
+                        <textarea name="" id="" rows="4" value={{about}}></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col text-right">
+                            <div class="col">
+                                <button type="button" class="btn btn-success" (click)="onUpdate()">Confirmar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </ng-template>
+        </div>
     </div>
-    <div>
-        {{about}}
-    </div>  
 </div>

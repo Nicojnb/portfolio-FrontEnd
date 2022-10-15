@@ -1,4 +1,4 @@
-import { IAttitudes } from "./IAttitudes";
+import { IAttitudes } from "src/app/model/IAttitudes"
 
 export const ATTITUDES: IAttitudes[] = [
     {

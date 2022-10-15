@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ATTITUDES } from 'src/app/model/Attitudes';
 import { IAttitudes } from 'src/app/model/IAttitudes';
 import { AttitudesService } from 'src/app/services/attitudes.service';
+import { ISvg } from 'src/app/model/ISvg';
 
 @Component({
   selector: 'app-attitudes',
@@ -17,4 +17,5 @@ export class AttitudesComponent implements OnInit {
   ngOnInit(): void {
     this.attitudServ.getAttitud().subscribe((value: IAttitudes[]) => this.attitudes = value);
   }
+
 }

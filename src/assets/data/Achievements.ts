@@ -1,4 +1,4 @@
-import {IAchievements} from  "./IAchievements"
+import { IAchievements } from "src/app/model/IAchievements"
 
 export const ACHIEVEMENTS: IAchievements[] =[
     {

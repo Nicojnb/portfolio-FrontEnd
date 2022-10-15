@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,12 @@ import { StudiesComponent } from './components/studies/studies.component';
 import { AchievementsComponent } from './components/achievements/achievements.component';
 import { LoginComponent } from './components/login/login.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AchievementsFormComponent } from './components/achievements-form/achievements-form.component';
+import { ExperienceFormComponent } from './components/experience-form/experience-form.component';
+import { StudiesFormComponent } from './components/studies-form/studies-form.component';
+import { RingGraphComponent } from './components/ring-graph/ring-graph.component';
+import { AttitudesFormComponent } from './components/attitudes-form/attitudes-form.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +32,19 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
     StudiesComponent,
     AchievementsComponent,
     LoginComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    AchievementsFormComponent,
+    ExperienceFormComponent,
+    StudiesFormComponent,
+    RingGraphComponent,
+    AttitudesFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
