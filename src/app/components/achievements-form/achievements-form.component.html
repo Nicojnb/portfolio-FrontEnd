@@ -1,0 +1,10 @@
+<form>
+    <label for="">Nombre:</label>
+    <input type="text" value={{achievement.name}}>
+    <label for="">Descripción:</label>
+    <input type="text" value={{achievement.description}}>
+    <label for="">URL:</label>
+    <input type="text" value={{achievement.url}}>
+    <button type="button" class="btn btn-success" (click)="onUpdate()">Confirmar</button>
+    <button type="button" class="btn btn-danger" (click)="onDelete()">Eliminar</button>
+</form>

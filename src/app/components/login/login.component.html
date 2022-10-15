@@ -12,23 +12,39 @@
         backdrop-filter: blur(30px);
         ">
     <div class="card-body py-5 px-md-5">
-
       <div class="row d-flex justify-content-center">
         <div class="col-lg-8">
           <h2 class="fw-bold mb-5">Iniciar Sessión</h2>
-          <form> 
+          <!-- Reactive Form  -->
+          <form [formGroup]="form"> 
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <input type="email" id="form3Example3" class="form-control" />
+              <input type="email" formControlName="email" id="form3Example3" class="form-control" />
               <label class="form-label" for="form3Example3">Dirección de email</label>
+              <!-- mini validacion -->
+              <div *ngIf="Email?.errors && Email?.touched">
+                <p *ngIf="Email?.hasError('required')" class="text-danger">
+                  El email es requerido.
+                </p>
+                <p *ngIf="Email?.hasError('email')" class="text-danger">
+                  El formato del email debe ser válido.
+                </p>
+              </div>
             </div>
-
             <!-- Password input -->
             <div class="form-outline mb-4">
-              <input type="password" id="form3Example4" class="form-control" />
+              <input type="password" formControlName="password" id="form3Example4" class="form-control" />
               <label class="form-label" for="form3Example4">Contraseña</label>
+              <!-- mini validacion -->
+              <div *ngIf="Password?.errors && Password?.touched">
+                <p *ngIf="Password?.hasError('required')" class="text-danger">
+                  La contraseña es requerida.
+                </p>
+                <p *ngIf="Password?.errors?.['minlength']" class="text-danger">
+                  La contraseña debe tener al menos 8 caracteres.
+                </p>
+              </div>
             </div>
-
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary btn-block mb-4">
               Iniciar

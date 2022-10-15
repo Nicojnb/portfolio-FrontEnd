@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { ACHIEVEMENTS } from '../model/Achievements';
 import { IAchievements } from '../model/IAchievements';
+import { ACHIEVEMENTS } from '../../assets/data/Achievements';
 
 @Injectable({
   providedIn: 'root'

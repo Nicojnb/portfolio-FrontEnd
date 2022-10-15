@@ -1,4 +1,4 @@
-import { ISocials } from "./ISocials";
+import { ISocials } from "src/app/model/ISocials"
 
 export const SOCIALS: ISocials[] = [
     {

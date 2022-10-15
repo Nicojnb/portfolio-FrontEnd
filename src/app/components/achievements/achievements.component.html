@@ -1,11 +1,36 @@
 <div class="card mat-card">
     <div class="card-titles">
-        <h2>Logros - Proyectos</h2>
-        <div class="btn-edit"></div>
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col text-left">
+                <h2>Logros - Proyectos</h2>
+              </div>
+              <div class="col text-right">
+                <div class="btn-add">
+                    <!--<button (click)="changeState()" class="btn-right"><i class="fa fa-plus"></i></button>-->
+                    <a href="portfolio#form" class="" (click)="changeState()"><i class="fa fa-plus"></i></a>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
-    <div >
-        <p *ngFor="let achievement of achievements">
-            {{achievement.name}} {{achievement.description}} <a href="{{achievement.url}}">IR</a>
-        </p>
-    </div> 
+    <div name="form">
+        <div *ngIf="showForm">
+            <app-achievements-form
+                [achievement]="outAchiev"
+            ></app-achievements-form>
+        </div>
+    </div>
+    <div class="row" *ngFor="let achievement of achievements">
+        <div class="col text-left">
+            <p >
+                {{achievement.name}} {{achievement.description}} <a href="{{achievement.url}}">IR</a>
+            </p>
+        </div>
+        <div class="col text-right">
+            <div class="btn-edit">
+                <a href="portfolio#form" class="btn-right" (click)="edit(achievement)" ><i class="fa fa-pen"></i></a>
+            </div>
+        </div>
+    </div>
 </div>
