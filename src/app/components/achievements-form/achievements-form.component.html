@@ -1,10 +1,16 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="onUpdate($event)">
     <label for="">Nombre:</label>
-    <input type="text" value={{achievement.name}}>
+    <input type="text"
+    formControlName="nombre"
+    >
     <label for="">Descripción:</label>
-    <input type="text" value={{achievement.description}}>
+    <input type="text"
+    formControlName="descripcion"
+    >
     <label for="">URL:</label>
-    <input type="text" value={{achievement.url}}>
-    <button type="button" class="btn btn-success" (click)="onUpdate()">Confirmar</button>
+    <input type="text" 
+    formControlName="url"
+    >
+    <button type="submit" class="btn btn-success" >Confirmar</button>
     <button type="button" class="btn btn-danger" (click)="onDelete()">Eliminar</button>
 </form>

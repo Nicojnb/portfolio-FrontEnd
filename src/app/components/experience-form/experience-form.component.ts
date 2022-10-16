@@ -29,7 +29,21 @@ export class ExperienceFormComponent implements OnInit {
     })
   }
 
+  setValue() {
+    this.form.setValue({
+      donde:this.exp.where,
+      rol:this.exp.role,
+      inicio:this.exp.start,
+      fin:this.exp.end
+    })
+    //this.form.patchValue({tipo: 'Carson', titulo: 'Drew'});
+  }
+
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
+    this.setValue();
   }
   
   onUpdate(event: Event) {

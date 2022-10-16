@@ -9,7 +9,7 @@ import { IStudies } from 'src/app/model/IStudies';
 })
 export class StudiesFormComponent implements OnInit {
   
-  form: FormGroup;
+  protected form: FormGroup;
 
   @Input() study: IStudies={
     id: 0,
@@ -25,7 +25,7 @@ export class StudiesFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) { 
     this.form=formBuilder.group({
-      'nombre':['', Validators.required,],
+      'nombre':['', [Validators.required, Validators.maxLength(30)]],
       'tipo':['', [Validators.required, Validators.maxLength(30)]],
       'titulo':['', [Validators.required, Validators.maxLength(30)]],
       'estado':['', [Validators.required, Validators.maxLength(30)]],
@@ -34,13 +34,46 @@ export class StudiesFormComponent implements OnInit {
     })
   }
 
+  setValue() {
+    this.form.setValue({
+      nombre:this.study.name,
+      tipo:this.study.type,
+      titulo:this.study.title,
+      estado:this.study.status,
+      inicio:this.study.start,
+      fin:this.study.end });
+    //this.form.patchValue({tipo: 'Carson', titulo: 'Drew'});
+  }
+
   ngOnInit(): void {
+    
+  }
+
+  ngOnChanges(): void{
+    this.setValue();
   }
 
   onUpdate(event: Event): void{
-    //this.studyUpdate.emit(this.study);
-    console.log(this.form);
+    
+    
     console.log("uwu");
+/*
+    if(this.form.get('donde')?.value)
+    this.exp.where= this.form.get('donde')?.value;
+    
+    if(this.form.get('rol')?.value)
+    this.exp.role= this.form.get('rol')?.value;*/
+
+    if(this.form.get('inicio')?.value)
+    this.study.start = this.form.get('inicio')?.value;
+
+    if(this.form.get('fin')?.value)
+    this.study.end= this.form.get('fin')?.value;
+
+    //this.expChange.emit(this.exp);
+    console.log(this.study);
+    console.log(this.form);
+    this.form.reset();
 
   }
 

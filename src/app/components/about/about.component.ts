@@ -6,9 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-onUpdate() {
-throw new Error('Method not implemented.');
-}
+
 
   protected showForm: boolean = true;
 
@@ -16,11 +14,15 @@ throw new Error('Method not implemented.');
     this.showForm=!this.showForm;
 }
 
-  @Input() about: string ="";
+  @Input() about?: string;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onUpdate() {
+    throw new Error('Method not implemented.');
   }
 
 }

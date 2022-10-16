@@ -5,36 +5,38 @@
         <div class="col text-left">
           <h2>Estudios</h2>
         </div>
+        <div class="col text-right">
+          <div class="btn-add">
+            <a href="portfolio#form" class="" (click)="add()"><i class="fa fa-plus"></i></a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div name="form">
+          <div *ngIf="showForm">
+            <div *ngIf="outStudy.id; else elseBlock">Modificar</div>
+            <ng-template #elseBlock>Agregar</ng-template>
+                <app-studies-form
+                [study]="outStudy"
+                (studyChange)="update(outStudy)"
+                ></app-studies-form>
+          </div>
+        </div> 
+        <div class="row" *ngFor="let study of studies">
+          <div class="col text-left">
+              <p (onUpdate)="update(study)">
+                      {{study.name}} {{study.title}} {{study.status}}
+                      {{study.start}}-{{study.end}}
+              </p>
+          </div>
           <div class="col text-right">
-            <div class="btn-add">
-              <a href="portfolio#form" class="" (click)="changeState()"><i class="fa fa-plus"></i></a>
+            <div class="btn-edit">
+              <a href="portfolio#form" class="btn-right" (click)="edit(study)" ><i class="fa fa-pen"></i></a>
+              <a href="portfolio#form" class="btn-right" (click)="delete(study)"><i class="fa fa-trash"></i></a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div>
-        <div name="form">
-          <div *ngIf="showForm">
-              <app-studies-form
-              [study]="outStudy"
-              
-              ></app-studies-form>
-          </div>
-        </div> 
-        <div class="row" *ngFor="let study of studies">
-            <div class="col text-left">
-                <p (onUpdate)="update(study)">
-                    {{study.name}} {{study.title}} {{study.status}}
-                    {{study.start}}-{{study.end}}
-                </p>
-            </div>
-            <div class="col text-right">
-              <div class="btn-edit">
-                  <a href="portfolio#form" class="btn-right" (click)="edit(study)" ><i class="fa fa-pen"></i></a>
-                  <a href="portfolio#form" class="btn-right" (click)="delete(study)"><i class="fa fa-trash"></i></a>
-              </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>

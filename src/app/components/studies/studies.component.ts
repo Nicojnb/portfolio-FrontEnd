@@ -10,13 +10,15 @@ import { STUDIES } from 'src/assets/data/Studies';
 })
 export class StudiesComponent implements OnInit {
 
+  protected studies: IStudies[] = [];
+
   protected outStudy: IStudies = { id: 0, name: '', type: '', title: '', status: '', start: 0, end: 0 };
 
   protected showForm: boolean = false;
   
-  protected studies: IStudies[] = [];
-  
+
   constructor(private studyServ: StudiesService) { }
+  
 
   ngOnInit(): void {
     this.studyServ.getStudy().subscribe((value: IStudies[]) => this.studies = value);
@@ -26,16 +28,23 @@ export class StudiesComponent implements OnInit {
     if(!this.showForm)
       this.showForm=true;
   }
+
+  add(): void {
+    this.outStudy ={ id:0, name:"", type:"", title:"", status:"", start:0, end:0 };
+    this.changeState();
+  }
   
+  
+  create(study: IStudies){
+    this.studyServ.postStudy(study).subscribe();
+    alert("No tengo BackEnd ☹");
+  }
+
   edit(study: IStudies): void {
     this.outStudy = study;
     this.changeState();
   }
 
-  create(study: IStudies){
-    this.studyServ.postStudy(study).subscribe();
-    alert("No tengo BackEnd ☹");
-  }
 
   update(study: IStudies){
     console.log(study);

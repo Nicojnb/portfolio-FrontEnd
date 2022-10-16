@@ -1,23 +1,19 @@
 <form [formGroup]="form" (ngSubmit)="onUpdate($event)">
     <label for="" >Donde:</label>
     <input type="text"
-        value={{exp.where}}
         formControlName="donde" 
     >
     <label for="">Rol:</label>
-    <input 
+    <input type="text" 
         formControlName="rol" 
-        type="text" 
-        value={{exp.role}}>
+        >
     <label for="">Inicio:</label>
-    <input 
+    <input type="number"  
         formControlName="inicio" 
-        type="number" 
-        value={{exp.start}}>
+        >
     <label for="">Fin:</label>
-    <input 
-        formControlName="fin" 
-        type="number" 
-        value={{exp.end}}>
+    <input type="number" 
+        formControlName="fin"
+    >
     <button type="submit" class="btn btn-success" >Confirmar</button>
 </form>
