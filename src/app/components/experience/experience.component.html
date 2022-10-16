@@ -7,36 +7,37 @@
                 </div>
                 <div class="col text-right">
                     <div class="btn-add">
-                        <a href="portfolio#form" class="" (click)="changeState()"><i class="fa fa-plus"></i></a>
+                        <a href="portfolio#form" class="" (click)="add()"><i class="fa fa-plus"></i></a>
                     </div>
                 </div>
             </div>
-            <div name="form">
-                <div *ngIf="showForm">
-                    <div *ngIf="outExperience.id; else elseBlock">Modificar</div>
-                    <ng-template #elseBlock>Agregar</ng-template>
-                    <app-experience-form
-                        [exp]="outExperience"
-                        (expChange)="update(outExperience)"
-                    ></app-experience-form>
-                </div>
-            </div> 
-            <div >
+            <!-- falta un div-->
+            <div>
+                <div name="form">
+                    <div *ngIf="showForm">
+                        <div *ngIf="outExperience.id; else elseBlock">Modificar</div>
+                        <ng-template #elseBlock>Agregar</ng-template>
+                        <app-experience-form
+                            [exp]="outExperience"
+                            (expChange)="update(outExperience)"
+                        ></app-experience-form>
+                    </div>
+                </div> 
                 <div class="row" *ngFor="let exp of experience">
                     <div class="col text-left">
-                        <p>
-                            {{exp.where}} {{exp.role}}
-                            {{exp.start}}-{{exp.end}}
-                        </p>
+                            <p>
+                                {{exp.where}} {{exp.role}}
+                                {{exp.start}}-{{exp.end}}
+                            </p>
                     </div>
                     <div class="col text-right">
-                    <div class="btn-edit">
-                        <a href="portfolio#form" class="btn-right" (click)="edit(exp)"><i class="fa fa-pen"></i></a>
-                    </div>
+                        <div class="btn-edit">
+                                <a href="portfolio#form" class="btn-right" (click)="edit(exp)"><i class="fa fa-pen"></i></a>
+                                <a href="portfolio#form" class="btn-right" (click)="delete(exp)"><i class="fa fa-trash"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
-        
     </div>
 </div>

@@ -9,20 +9,15 @@ import { ExperiencesService } from 'src/app/services/experiences.service';
 })
 export class ExperienceComponent implements OnInit {
 
+  protected experience: IExperience[] = [];
+
+  protected outExperience: IExperience = { id: 0, where: '', role: '', start: 0, end: 0 };
 
   protected showForm: boolean = false;
 
-  protected experience: IExperience[] = [];
-
-  protected outExperience: IExperience = {
-    id: 0,
-    where: '',
-    role: '',
-    start: 0,
-    end: 0
-  };
 
   constructor(private expServ: ExperiencesService) { }
+
 
   ngOnInit(): void {
     this.expServ.getExp().subscribe((value: IExperience[]) => this.experience = value);
@@ -33,10 +28,16 @@ export class ExperienceComponent implements OnInit {
       this.showForm=true;
   }
 
+  add(): void {
+    this.changeState();
+    this.outExperience = {id:0,where:"",role:"",start:0,end:0};
+  }
+
+  
+
   edit(exp: IExperience): void {
     this.outExperience = exp;
     this.changeState();
-    //console.log(this.outExperience);
   }
 
   update(updateExp: IExperience): void{
@@ -46,6 +47,10 @@ export class ExperienceComponent implements OnInit {
     else
       this.expServ.postExp(updateExp).subscribe();
     console.log(updateExp);
+  }
+  
+  delete(_t25: IExperience) {
+    throw new Error('Method not implemented.');
   }
 
 }

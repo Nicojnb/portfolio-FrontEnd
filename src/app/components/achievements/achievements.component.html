@@ -8,7 +8,7 @@
               <div class="col text-right">
                 <div class="btn-add">
                     <!--<button (click)="changeState()" class="btn-right"><i class="fa fa-plus"></i></button>-->
-                    <a href="portfolio#form" class="" (click)="changeState()"><i class="fa fa-plus"></i></a>
+                    <a href="portfolio#form" class="" (click)="add()"><i class="fa fa-plus"></i></a>
                 </div>
               </div>
             </div>
@@ -16,6 +16,8 @@
     </div>
     <div name="form">
         <div *ngIf="showForm">
+            <div *ngIf="outAchiev.id; else elseBlock">Modificar</div>
+                        <ng-template #elseBlock>Agregar</ng-template>
             <app-achievements-form
                 [achievement]="outAchiev"
             ></app-achievements-form>

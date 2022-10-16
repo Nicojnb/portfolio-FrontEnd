@@ -1,34 +1,39 @@
 <form [formGroup]="form" (ngSubmit)="onUpdate($event)">
     <div>
-        
         <label for="">Institución:</label>
         <input type="text"
-        value={{study.name}}>
+        formControlName="nombre"
+        >
     </div>
     <div>
         <label for="">Tipo:</label>
         <input type="text"
-        value={{study.type}}>
+        formControlName="tipo"
+        >
     </div>
     <div>
         <label for="">Título:</label>
         <input type="text"
-        value={{study.title}}>
+        formControlName="titulo"
+        >
     </div>
     <div>
         <label for="">Estado:</label>
         <input type="text"
-        value={{study.status}}>
+        formControlName="estado"
+        >
     </div>
     <div>
         <label for="">Inicio:</label>
         <input type="number"
-        value={{study.start}}>
+        formControlName="inicio"
+        >
     </div>
     <div>
         <label for="">Fin:</label>
         <input type="number"
-        value={{study.end}}>
+        formControlName="fin"
+        >
     </div>
     <button type="submit" class="btn btn-success" >Confirmar</button>
 </form>

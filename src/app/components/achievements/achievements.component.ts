@@ -27,10 +27,20 @@ export class AchievementsComponent implements OnInit {
     this.achievServ.getAchiev().subscribe((value: IAchievements[]) => this.achievements = value);
   }
 
-  changeState():void{
+  changeState(): void {
     if(!this.showForm)
       this.showForm=true;
   }
+  
+  add(): void {
+    this.changeState();
+    this.outAchiev = {
+      id: 0,
+      name: '',
+      description: '',
+      url: ''}
+  }
+
   edit(achiev: IAchievements) {
     this.outAchiev = achiev;
     this.changeState();
