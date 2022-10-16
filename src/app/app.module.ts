@@ -20,6 +20,7 @@ import { ExperienceFormComponent } from './components/experience-form/experience
 import { StudiesFormComponent } from './components/studies-form/studies-form.component';
 import { RingGraphComponent } from './components/ring-graph/ring-graph.component';
 import { AttitudesFormComponent } from './components/attitudes-form/attitudes-form.component';
+import { RouterOutlet } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AttitudesFormComponent } from './components/attitudes-form/attitudes-fo
     AppRoutingModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterOutlet
   ],
   providers: [],
   bootstrap: [AppComponent]

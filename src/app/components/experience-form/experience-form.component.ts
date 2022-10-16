@@ -47,6 +47,8 @@ export class ExperienceFormComponent implements OnInit {
     this.exp.end= this.form.get('fin')?.value;
 
     this.expChange.emit(this.exp);
+
+    this.form.reset();
   }
 
   get Donde(){
