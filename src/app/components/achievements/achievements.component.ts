@@ -14,12 +14,7 @@ export class AchievementsComponent implements OnInit {
 
   protected achievements: IAchievements[] = [];
 
-  protected outAchiev: IAchievements={
-    id: 0,
-    name: '',
-    description: '',
-    url: ''
-  }
+  protected outAchiev!: IAchievements;
 
   constructor(private achievServ: AchievService) { }
 
@@ -38,7 +33,9 @@ export class AchievementsComponent implements OnInit {
       id: 0,
       name: '',
       description: '',
-      url: ''}
+      url: '',
+      userId: 0
+    }
   }
 
   edit(achiev: IAchievements) {

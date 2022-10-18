@@ -9,12 +9,7 @@ import { IAchievements } from 'src/app/model/IAchievements';
 })
 export class AchievementsFormComponent implements OnInit {
 
-  @Input() achievement: IAchievements={
-    id: 0,
-    name: '',
-    description: '',
-    url: ''
-  };
+  @Input() achievement!: IAchievements;
 
   @Output() achievementUpdate = new EventEmitter<IAchievements>();
 

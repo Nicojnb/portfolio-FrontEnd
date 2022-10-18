@@ -11,7 +11,7 @@ export class ExperienceComponent implements OnInit {
 
   protected experience: IExperience[] = [];
 
-  protected outExperience: IExperience = { id: 0, where: '', role: '', start: 0, end: 0 };
+  protected outExperience: IExperience = { id: 0, name: '', role: '', userId: 0 };
 
   protected showForm: boolean = false;
 
@@ -30,10 +30,8 @@ export class ExperienceComponent implements OnInit {
 
   add(): void {
     this.changeState();
-    this.outExperience = {id:0,where:"",role:"",start:0,end:0};
+    this.outExperience = {id:0,name:"",role:"",userId:0};
   }
-
-  
 
   edit(exp: IExperience): void {
     this.outExperience = exp;

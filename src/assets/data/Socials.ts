@@ -8,6 +8,7 @@ export const SOCIALS: ISocials[] = [
         icon: "fab fa-facebook",
         title: "Facebook",
         color: "#1876F2",
+        userId: 5456464
     },
     {
         id: 2,
@@ -15,7 +16,8 @@ export const SOCIALS: ISocials[] = [
         url: "",
         icon: "fab fa-instagram",
         title: "Instagram",
-        color: "#dd2a7b"
+        color: "#dd2a7b",
+        userId: 5456464
     },
     {
         id: 3,
@@ -23,7 +25,8 @@ export const SOCIALS: ISocials[] = [
         url: "",
         icon: "fab fa-twitter",
         title: "Twitter",
-        color: "#1d9bf0"
+        color: "#1d9bf0",
+        userId: 5456464
     },
     {
         id: 4,
@@ -31,7 +34,8 @@ export const SOCIALS: ISocials[] = [
         url: "",
         icon: "fab fa-tiktok",
         title: "TikTok",
-        color: ""
+        color: "",
+        userId: 5456464
     },
     {
         id: 5,
@@ -39,7 +43,8 @@ export const SOCIALS: ISocials[] = [
         url: "",
         icon: "fab fa-linkedin",
         title: "LinkedIn",
-        color: "#0a66c2"
+        color: "#0a66c2",
+        userId: 5456464
     },
     {
         id: 6,
@@ -47,6 +52,7 @@ export const SOCIALS: ISocials[] = [
         url: "",
         icon: "fab fa-youtube",
         title: "YouTube",
-        color: "#dd2c00"
+        color: "#dd2c00",
+        userId: 5456464
     }
 ]

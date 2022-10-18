@@ -11,7 +11,7 @@ import { ATTRIBUTES } from 'src/assets/data/Attributes';
 })
 export class IntroComponent implements OnInit {
 
-  attributes: IAttributes = {
+  protected attributes: IAttributes = {
     id: 0,
     firstName: '',
     lastName: '',
@@ -21,7 +21,8 @@ export class IntroComponent implements OnInit {
     state: '',
     country: '',
     university: '',
-    about: ''
+    about: '',
+    userId: 0
   };
 
   constructor(private attribServ: AttribService) { }

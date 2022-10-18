@@ -1,4 +1,4 @@
-export interface IAttributes{
+export interface IAttributes {
     id: number;
     firstName: string;
     lastName: string;
@@ -9,4 +9,5 @@ export interface IAttributes{
     country: string;
     university: string;
     about: string;
+    userId: number;
 }

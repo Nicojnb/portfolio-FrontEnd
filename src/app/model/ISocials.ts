@@ -5,4 +5,5 @@ export interface ISocials{
     icon: string;
     title: string;
     color: string;
+    userId: number;
 }

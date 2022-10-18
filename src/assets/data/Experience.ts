@@ -3,23 +3,20 @@ import { IExperience } from "src/app/model/IExperience"
 export const EXPERIENCE: IExperience[] = [
     {
         id: 1,
-        where: "Feria",
+        name: "Feria",
         role: "Atención al cliente",
-        start: 2015,
-        end: 2017
+        userId: 5456464
     },
     {
         id: 2,
-        where: "Taxi",
+        name: "Taxi",
         role: "Conductor",
-        start: 2017,
-        end: 2020
+        userId: 5456464
     },
     {
         id: 3,
-        where: "Potenciar trabajo",
+        name: "Potenciar trabajo",
         role: "Empleado",
-        start: 2021,
-        end: 2022
+        userId: 5456464
     }
 ]

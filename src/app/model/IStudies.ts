@@ -1,4 +1,4 @@
-export interface IStudies{
+export interface IStudies {
     id: number;
     name: string;
     type: string;
@@ -6,4 +6,5 @@ export interface IStudies{
     status: string,
     start: number;
     end: number;
+    userId: number;
 }
