@@ -18,8 +18,9 @@ export class StudiesFormComponent implements OnInit {
     title: '',
     status: '',
     start: 0,
-    end: 0
-  };
+    end: 0,
+    userId: 0
+  }
 
   @Output() studyUpdate = new EventEmitter<IStudies>();
 

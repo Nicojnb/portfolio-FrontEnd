@@ -8,15 +8,17 @@ export const STUDIES: IStudies[] = [
         title: "Modalidad humanidades y ciencias sociales",
         status: "completo",
         start: 2010,
-        end: 2015
+        end: 2015,
+        userId: 5456464
     },
     {
         id: 2,
-        name: "Ingeniería en Sistemas de Información",
+        name: "Universidad Tecnológica Nacional - Facultad Regional Tucumán",
         type: "Universitario",
         title: "Ingeniero en Sistemas de Información",
         status: "incompleto",
         start: 2017,
-        end: 2022
+        end: 2022,
+        userId: 5456464
     }
 ]

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 import { IStudies } from '../model/IStudies';
 import { STUDIES } from 'src/assets/data/Studies';
-import { HttpClient, HttpContext, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,10 +15,9 @@ const httpOptions = {
 })
 export class StudiesService {
 
-  private apiURL = "127.0.0.1:8080/studies";
+  private apiURL = "http://127.0.0.1:8080/studies/";
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   postStudy(study: IStudies): Observable <IStudies>{
     //const url= `${this.apiURL}/${study.id}`
@@ -26,7 +25,7 @@ export class StudiesService {
   }
 
   getStudy(): Observable <IStudies[]>{
-    return this.http.get<IStudies[]>(this.apiURL).pipe(
+    return this.http.get<IStudies[]>(this.apiURL+1000).pipe(
       catchError((error: HttpErrorResponse) => {
         console.warn(
             'Error',

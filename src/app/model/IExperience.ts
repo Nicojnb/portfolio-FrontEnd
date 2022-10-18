@@ -1,7 +1,8 @@
-export interface IExperience{
+export interface IExperience {
     id: number;
-    where: string;
+    name: string;
     role: string;
-    start: number;
-    end: number;
+    start?: Date;
+    end?: Date;
+    userId: number;
 }

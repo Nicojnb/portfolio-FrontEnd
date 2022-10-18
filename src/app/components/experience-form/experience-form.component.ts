@@ -9,13 +9,13 @@ import { IExperience } from 'src/app/model/IExperience';
 })
 export class ExperienceFormComponent implements OnInit {
 
-  @Input() exp: IExperience ={
+  @Input() exp: IExperience = {
     id: 0,
-    where: '',
+    name: '',
     role: '',
-    start: 0,
-    end: 0
-  };
+    userId: 0
+  }
+  
   @Output() expChange: EventEmitter<IExperience> = new EventEmitter();
   
   form: FormGroup;
@@ -31,7 +31,7 @@ export class ExperienceFormComponent implements OnInit {
 
   setValue() {
     this.form.setValue({
-      donde:this.exp.where,
+      donde:this.exp.name,
       rol:this.exp.role,
       inicio:this.exp.start,
       fin:this.exp.end
@@ -49,7 +49,7 @@ export class ExperienceFormComponent implements OnInit {
   onUpdate(event: Event) {
     
     if(this.form.get('donde')?.value)
-    this.exp.where= this.form.get('donde')?.value;
+    this.exp.name= this.form.get('donde')?.value;
     
     if(this.form.get('rol')?.value)
     this.exp.role= this.form.get('rol')?.value;

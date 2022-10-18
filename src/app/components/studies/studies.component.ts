@@ -12,7 +12,16 @@ export class StudiesComponent implements OnInit {
 
   protected studies: IStudies[] = [];
 
-  protected outStudy: IStudies = { id: 0, name: '', type: '', title: '', status: '', start: 0, end: 0 };
+  protected outStudy: IStudies = {
+    id: 0,
+    name: '',
+    type: '',
+    title: '',
+    status: '',
+    start: 0,
+    end: 0,
+    userId: 0
+  };
 
   protected showForm: boolean = false;
   
@@ -30,7 +39,7 @@ export class StudiesComponent implements OnInit {
   }
 
   add(): void {
-    this.outStudy ={ id:0, name:"", type:"", title:"", status:"", start:0, end:0 };
+    this.outStudy = { id: 0, name: '', type: '', title: '', status: '', start: 0, end: 0, userId: 0};
     this.changeState();
   }
   
