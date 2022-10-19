@@ -14,13 +14,13 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AttitudesService {
-
+  
   private apiURL = "http://127.0.0.1:8080/attitud/";
 
   constructor(private http: HttpClient) { }
 
   getAttitud(): Observable <IAttitudes[]>{
-    return this.http.get<IAttitudes[]>(this.apiURL+1000).pipe(
+    return this.http.get<IAttitudes[]>(this.apiURL).pipe(
       catchError((error: HttpErrorResponse) => {
         console.warn(
             'Error',
@@ -30,4 +30,20 @@ export class AttitudesService {
         })
     )
   }
+
+  postAttitud(attitud: IAttitudes): Observable <IAttitudes> {
+    const url= `${this.apiURL}${'add'}`;
+    return this.http.post<IAttitudes>(url, attitud, httpOptions);
+  }
+
+  putAttitud(attitud: IAttitudes): Observable <IAttitudes> {
+    const url= `${this.apiURL}${'edit'}`;
+    return this.http.put<IAttitudes>(url, attitud, httpOptions);
+  }
+
+  deleteAttitud(attitud: IAttitudes): Observable <IAttitudes>{
+    const url= `${this.apiURL}${'delete'}/${attitud.id}`
+    return this.http.delete<IAttitudes>(url);
+  }
+
 }

@@ -23,32 +23,35 @@ export class ExperienceComponent implements OnInit {
     this.expServ.getExp().subscribe((value: IExperience[]) => this.experience = value);
   }
 
-  changeState(): void {
-    if(!this.showForm)
-      this.showForm=true;
+  changeState(value: boolean): void {
+    this.showForm=value;
   }
 
   add(): void {
-    this.changeState();
+    this.changeState(true);
     this.outExperience = {id:0,name:"",role:"",userId:0};
   }
 
   edit(exp: IExperience): void {
     this.outExperience = exp;
-    this.changeState();
+    this.changeState(true);
   }
 
   update(updateExp: IExperience): void{
-    console.log("recibido")
     if(updateExp.id===0)
-      console.log("no implementado");
-    else
       this.expServ.postExp(updateExp).subscribe();
-    console.log(updateExp);
+    else
+      this.expServ.putStudy(updateExp).subscribe();
+      this.changeState(false);
   }
   
-  delete(_t25: IExperience) {
-    throw new Error('Method not implemented.');
+  delete(exp: IExperience) {
+    this.expServ.deleteExp(exp).subscribe(
+      () => {
+      this.experience = this.experience.filter( (t) =>{
+        return t.id !== exp.id })
+    })
+    alert("Eliminado: ☹");
   }
 
 }

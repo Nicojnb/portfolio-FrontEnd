@@ -20,6 +20,8 @@
                         <ng-template #elseBlock>Agregar</ng-template>
             <app-achievements-form
                 [achievement]="outAchiev"
+                (closeForm)="changeState(false)"
+                (achievementChange)="update(outAchiev)"
             ></app-achievements-form>
         </div>
     </div>
@@ -31,7 +33,8 @@
         </div>
         <div class="col text-right">
             <div class="btn-edit">
-                <a href="portfolio#form" class="btn-right" (click)="edit(achievement)" ><i class="fa fa-pen"></i></a>
+                <a href="portfolio#form" class="btn btn-right" (click)="edit(achievement)" ><i class="fa fa-pen"></i></a>
+                <a href="portfolio#form" class="btn btn-right delete" (click)="delete(achievement)"><i class="fa fa-trash"></i></a>
             </div>
         </div>
     </div>

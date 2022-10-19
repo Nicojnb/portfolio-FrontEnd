@@ -12,16 +12,8 @@ export class StudiesComponent implements OnInit {
 
   protected studies: IStudies[] = [];
 
-  protected outStudy: IStudies = {
-    id: 0,
-    name: '',
-    type: '',
-    title: '',
-    status: '',
-    start: 0,
-    end: 0,
-    userId: 0
-  };
+  protected outStudy: IStudies = { id: 0, name: '', type: '', title: '',
+    status: '', start: 0, end: 0, userId: 0 };
 
   protected showForm: boolean = false;
   
@@ -33,32 +25,26 @@ export class StudiesComponent implements OnInit {
     this.studyServ.getStudy().subscribe((value: IStudies[]) => this.studies = value);
   }
 
-  changeState() {
-    if(!this.showForm)
-      this.showForm=true;
+  changeState(value: boolean): void {
+    this.showForm=value;
   }
 
   add(): void {
     this.outStudy = { id: 0, name: '', type: '', title: '', status: '', start: 0, end: 0, userId: 0};
-    this.changeState();
+    this.changeState(true);
   }
   
-  
-  create(study: IStudies){
-    this.studyServ.postStudy(study).subscribe();
-    alert("No tengo BackEnd ☹");
-  }
-
   edit(study: IStudies): void {
     this.outStudy = study;
-    this.changeState();
+    this.changeState(true);
   }
 
-
   update(study: IStudies){
-    console.log(study);
+    if(study.id===0)
+      this.studyServ.postStudy(study).subscribe();
+    else
     this.studyServ.putStudy(study).subscribe();
-    alert("No tengo BackEnd ☹");
+    this.changeState(false);
   }
 
   delete(study: IStudies){
@@ -67,7 +53,7 @@ export class StudiesComponent implements OnInit {
         this.studies = this.studies.filter( (t) =>{
           return t.id !== study.id })
     })
-    alert("No tengo BackEnd ☹");
+    alert("Eliminado ☹");
   }
 
 }

@@ -8,12 +8,13 @@
         formControlName="rol" 
         >
     <label for="">Inicio:</label>
-    <input type="number"  
+    <input type="date"  
         formControlName="inicio" 
         >
     <label for="">Fin:</label>
-    <input type="number" 
+    <input type="date" 
         formControlName="fin"
     >
     <button type="submit" class="btn btn-success" >Confirmar</button>
+    <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
 </form>

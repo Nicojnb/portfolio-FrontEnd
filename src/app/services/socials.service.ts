@@ -20,7 +20,7 @@ export class SocialsService {
   constructor(private http: HttpClient) { }
 
   getSoc(): Observable <ISocials[]> {
-    return this.http.get<ISocials[]>(this.apiURL+1000).pipe(
+    return this.http.get<ISocials[]>(this.apiURL).pipe(
       catchError((error: HttpErrorResponse) => {
         console.warn(
             'Error',
@@ -29,6 +29,10 @@ export class SocialsService {
           return of(SOCIALS);
         })
     )
+  }
+  deleteSoc(social: ISocials): Observable <ISocials>{
+    const url= `${this.apiURL}${'delete'}/${social.id}`
+    return this.http.delete<ISocials>(url);
   }
 
 }

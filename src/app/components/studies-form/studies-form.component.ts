@@ -22,7 +22,8 @@ export class StudiesFormComponent implements OnInit {
     userId: 0
   }
 
-  @Output() studyUpdate = new EventEmitter<IStudies>();
+  @Output() studyChange = new EventEmitter<IStudies>();
+  @Output() closeForm = new EventEmitter<boolean>();
 
   constructor(private formBuilder: FormBuilder) { 
     this.form=formBuilder.group({
@@ -42,7 +43,9 @@ export class StudiesFormComponent implements OnInit {
       titulo:this.study.title,
       estado:this.study.status,
       inicio:this.study.start,
-      fin:this.study.end });
+      fin:this.study.end,
+      
+     });
     //this.form.patchValue({tipo: 'Carson', titulo: 'Drew'});
   }
 
@@ -54,16 +57,26 @@ export class StudiesFormComponent implements OnInit {
     this.setValue();
   }
 
+  
+  onCancel() {
+    this.form.reset();
+    this.setValue();
+    this.closeForm.emit(false);
+  }
+
   onUpdate(event: Event): void{
+
+    if(this.form.get('nombre')?.value)
+    this.study.name= this.form.get('nombre')?.value;
     
-    
-    console.log("uwu");
-/*
-    if(this.form.get('donde')?.value)
-    this.exp.where= this.form.get('donde')?.value;
-    
-    if(this.form.get('rol')?.value)
-    this.exp.role= this.form.get('rol')?.value;*/
+    if(this.form.get('tipo')?.value)
+    this.study.type= this.form.get('tipo')?.value;
+
+    if(this.form.get('titulo')?.value)
+    this.study.title= this.form.get('titulo')?.value;
+
+    if(this.form.get('estado')?.value)
+    this.study.status= this.form.get('estado')?.value;
 
     if(this.form.get('inicio')?.value)
     this.study.start = this.form.get('inicio')?.value;
@@ -71,9 +84,8 @@ export class StudiesFormComponent implements OnInit {
     if(this.form.get('fin')?.value)
     this.study.end= this.form.get('fin')?.value;
 
-    //this.expChange.emit(this.exp);
-    console.log(this.study);
-    console.log(this.form);
+    this.studyChange.emit(this.study);
+
     this.form.reset();
 
   }
