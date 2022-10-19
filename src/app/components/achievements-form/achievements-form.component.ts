@@ -9,12 +9,13 @@ import { IAchievements } from 'src/app/model/IAchievements';
 })
 export class AchievementsFormComponent implements OnInit {
 
-  @Input() achievement!: IAchievements;
+  @Input() achievement: IAchievements = { id: 0, name: '',
+    description: '', url: '', userId: 0 };
 
-  @Output() achievementUpdate = new EventEmitter<IAchievements>();
+  @Output() achievementChange = new EventEmitter<IAchievements>();
+  @Output() closeForm = new EventEmitter<boolean>();
 
-
-  form!: FormGroup;
+  form: FormGroup;
   
   constructor(private formBuilder: FormBuilder) { 
     this.form=formBuilder.group({
@@ -29,7 +30,6 @@ export class AchievementsFormComponent implements OnInit {
       nombre:this.achievement.name,
       descripcion:this.achievement.description,
       url:this.achievement.url });
-    //this.form.patchValue({tipo: 'Carson', titulo: 'Drew'});
   }
 
   ngOnInit(): void { }
@@ -37,15 +37,29 @@ export class AchievementsFormComponent implements OnInit {
   ngOnChanges() {
     this.setValue();
   }
-
-  onUpdate($event: any) {
-    
-  }
   
-  onDelete() {
-    throw new Error('Method not implemented.');
+  onCancel() {
+    this.form.reset();
+    this.setValue();
+    this.closeForm.emit(false);
   }
 
+  onUpdate(event: Event): void{
+
+    if(this.form.get('nombre')?.value)
+    this.achievement.name= this.form.get('nombre')?.value;
     
+    if(this.form.get('descripcion')?.value)
+    this.achievement.description= this.form.get('descripcion')?.value;
+
+    if(this.form.get('url')?.value)
+    this.achievement.url= this.form.get('url')?.value;
+
+    this.achievementChange.emit(this.achievement);
+
+    this.form.reset();
+
+  }
+
 
 }

@@ -18,6 +18,7 @@
             <ng-template #elseBlock>Agregar</ng-template>
                 <app-studies-form
                 [study]="outStudy"
+                (closeForm)="changeState(false)"
                 (studyChange)="update(outStudy)"
                 ></app-studies-form>
           </div>
@@ -25,14 +26,14 @@
         <div class="row" *ngFor="let study of studies">
           <div class="col text-left">
               <p (onUpdate)="update(study)">
-                      {{study.name}} {{study.title}} {{study.status}}
+                      {{study.name}} {{study.type}} {{study.title}} {{study.status}}
                       {{study.start}}-{{study.end}}
               </p>
           </div>
           <div class="col text-right">
             <div class="btn-edit">
-              <a href="portfolio#form" class="btn-right" (click)="edit(study)" ><i class="fa fa-pen"></i></a>
-              <a href="portfolio#form" class="btn-right" (click)="delete(study)"><i class="fa fa-trash"></i></a>
+              <a href="portfolio#form" class="btn btn-right" (click)="edit(study)" ><i class="fa fa-pen"></i></a>
+              <a href="portfolio#form" class="btn btn-danger btn-right" (click)="delete(study)"><i class="fa fa-trash"></i></a>
             </div>
           </div>
         </div>

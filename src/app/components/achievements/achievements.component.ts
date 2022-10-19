@@ -22,25 +22,40 @@ export class AchievementsComponent implements OnInit {
     this.achievServ.getAchiev().subscribe((value: IAchievements[]) => this.achievements = value);
   }
 
-  changeState(): void {
-    if(!this.showForm)
-      this.showForm=true;
-  }
-  
-  add(): void {
-    this.changeState();
-    this.outAchiev = {
-      id: 0,
-      name: '',
-      description: '',
-      url: '',
-      userId: 0
-    }
+  changeState(value: boolean): void {
+    this.showForm=value;
   }
 
+  add(): void {
+    this.outAchiev = { id: 0, name: '', description: '',
+      url: '', userId: 0 };
+    this.changeState(true);
+  }
+  
   edit(achiev: IAchievements) {
     this.outAchiev = achiev;
-    this.changeState();
-    console.log(this.outAchiev);
+    this.changeState(true);
   }
+
+
+  update(achiev: IAchievements){
+    if(achiev.id===0)
+      this.achievServ.postAchiev(achiev).subscribe();
+    else
+    this.achievServ.putAchiev(achiev).subscribe();
+    this.changeState(false);
+  }
+
+  delete(achiev: IAchievements){
+    this.achievServ.deleteAchiev(achiev).subscribe(
+      () => {
+        this.achievements = this.achievements.filter( (t) =>{
+          return t.id !== achiev.id })
+    })
+    alert("Eliminado ☹");
+  }
+
+  
+  
+
 }

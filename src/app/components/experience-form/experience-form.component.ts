@@ -13,10 +13,13 @@ export class ExperienceFormComponent implements OnInit {
     id: 0,
     name: '',
     role: '',
+    start: new Date,
+    end: new Date,
     userId: 0
   }
   
   @Output() expChange: EventEmitter<IExperience> = new EventEmitter();
+  @Output() closeForm: EventEmitter<boolean> = new EventEmitter();
   
   form: FormGroup;
 
@@ -30,16 +33,28 @@ export class ExperienceFormComponent implements OnInit {
   }
 
   setValue() {
+    if(this.exp.start && this.exp.end){
     this.form.setValue({
       donde:this.exp.name,
       rol:this.exp.role,
       inicio:this.exp.start,
       fin:this.exp.end
+    })}else{
+    this.form.patchValue({
+      donde:this.exp.name,
+      rol:this.exp.role
     })
+  }
     //this.form.patchValue({tipo: 'Carson', titulo: 'Drew'});
   }
 
   ngOnInit(): void {
+  }
+
+  onCancel() {
+    this.form.reset();
+    this.setValue();
+    this.closeForm.emit(false);
   }
 
   ngOnChanges(): void {
@@ -55,7 +70,7 @@ export class ExperienceFormComponent implements OnInit {
     this.exp.role= this.form.get('rol')?.value;
 
     if(this.form.get('inicio')?.value)
-    this.exp.start = this.form.get('inicio')?.value;
+    this.exp.start = new Date(this.form.get('inicio')?.value);
 
     if(this.form.get('fin')?.value)
     this.exp.end= this.form.get('fin')?.value;

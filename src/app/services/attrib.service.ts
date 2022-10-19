@@ -20,18 +20,21 @@ export class AttribService {
 
   constructor(private http: HttpClient) { }
 
-  getAttrib(): Observable <IAttributes> {
+  getAttrib(): Observable <IAttributes[]> {
     //console.log(this.http.get<IAttributes>(this.apiURL+1000));
-    const respuesta = this.http.get<IAttributes>(this.apiURL+1000).pipe(
+    return this.http.get<IAttributes[]>(this.apiURL).pipe(
       catchError((error: HttpErrorResponse) => {
         console.warn(
             'Error',
             error
           );
-          return (ATTRIBUTES);
+          return of(ATTRIBUTES);
         })
     );
-    console.log("respuesta: "+respuesta);
-    return respuesta;
+  }
+
+  putStudy(attrib: IAttributes): Observable <IAttributes>{
+    const url= `${this.apiURL}${'edit'}`
+    return this.http.put<IAttributes>(url, attrib, httpOptions);
   }
 }

@@ -14,13 +14,13 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AchievService {
-
+  
   private apiURL = "http://127.0.0.1:8080/achievs/";
 
   constructor(private http: HttpClient) { }
 
   getAchiev(): Observable <IAchievements[]> {
-    return this.http.get<IAchievements[]>(this.apiURL+1000).pipe(
+    return this.http.get<IAchievements[]>(this.apiURL).pipe(
       catchError((error: HttpErrorResponse) => {
         console.warn(
             'Error',
@@ -29,6 +29,21 @@ export class AchievService {
           return of(ACHIEVEMENTS);
         })
     )
+  }
+
+  putAchiev(achiev: IAchievements): Observable <IAchievements> {
+    const url= `${this.apiURL}${'add'}`;
+    return this.http.put<IAchievements>(url, achiev, httpOptions);
+  }
+
+  postAchiev(achiev: IAchievements): Observable <IAchievements> {
+    const url= `${this.apiURL}${'edit'}`;
+    return this.http.put<IAchievements>(url, achiev, httpOptions);
+  }
+
+  deleteAchiev(achiev: IAchievements): Observable <IAchievements>{
+    const url= `${this.apiURL}${'delete'}/${achiev.id}`
+    return this.http.delete<IAchievements>(url);
   }
   
 }

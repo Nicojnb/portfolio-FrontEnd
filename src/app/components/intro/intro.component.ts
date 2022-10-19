@@ -11,24 +11,14 @@ import { ATTRIBUTES } from 'src/assets/data/Attributes';
 })
 export class IntroComponent implements OnInit {
 
-  protected attributes: IAttributes = {
-    id: 0,
-    firstName: '',
-    lastName: '',
-    prof: '',
-    urlImage: '',
-    urlBack: '',
-    state: '',
-    country: '',
-    university: '',
-    about: '',
-    userId: 0
-  };
+  protected attributes: IAttributes[] = [];
+
+  protected names: string="";
 
   constructor(private attribServ: AttribService) { }
 
   ngOnInit(): void {
-    this.attribServ.getAttrib().subscribe((value: IAttributes) => this.attributes = value);
+    this.attribServ.getAttrib().subscribe((value: IAttributes[]) => this.attributes = value);
   }
 
 }

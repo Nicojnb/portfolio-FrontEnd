@@ -1,25 +1,25 @@
-<app-header [name]="attributes.firstName+ +attributes.lastName" ></app-header>
+<app-header [name]="this.attributes[0].firstName+' '+this.attributes[0].lastName" ></app-header>
 <div class="card mat-card" id="first-card">
     <div  class="">
-        <div id="profile-background"><img src="{{attributes.urlBack}}"></div>
+        <div id="profile-background"><img src="{{attributes[0].urlBack}}"></div>
         <div id="info" style="padding: 16px">
             <div id="info-img">
-                <img mat-card-image class="img-fluid rounded-circle profile-image " src="{{attributes.urlImage}}" alt="Generic placeholder image">
+                <img mat-card-image class="img-fluid rounded-circle profile-image " src="{{attributes[0].urlImage}}" alt="Generic placeholder image">
                 <div class="btn-edit"><a href="#" class="btn-right"><i class="fa fa-pen"></i></a></div>
             </div>
             <div id="info-data">
                 <div>
-                    <h1>{{attributes.firstName}} {{attributes.lastName}}</h1>
-                    <div id="info-company">{{attributes.prof}}</div>
+                    <h1>{{attributes[0].firstName}} {{attributes[0].lastName}}</h1>
+                    <div id="info-company">{{attributes[0].prof}}</div>
                     <div id="info-contact">
-                        <span class="h4">{{attributes.state}} {{attributes.country}}</span>
+                        <span class="h4">{{attributes[0].state}} {{attributes[0].country}}</span>
                         <span class="h4"><a href="mailto:mi_correo@servidor.com"> Información de contacto </a></span>
                     </div>
                 </div>
                 <ul id="info-details">
                     <li><a href="http://www.frt.utn.edu.ar/">
                         <img src="assets/images/logo_favicon.png">
-                        <h2>{{attributes.university}}</h2>
+                        <h2>{{attributes[0].university}}</h2>
                     </a></li>
                 </ul>
             </div>
@@ -30,4 +30,4 @@
         </div>
     </div>
 </div>
-<app-about [about]="attributes.about" ></app-about>
+<app-about [about]="attributes[0].about" ></app-about>
