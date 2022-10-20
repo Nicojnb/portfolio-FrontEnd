@@ -18,9 +18,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AchievementsFormComponent } from './components/achievements-form/achievements-form.component';
 import { ExperienceFormComponent } from './components/experience-form/experience-form.component';
 import { StudiesFormComponent } from './components/studies-form/studies-form.component';
-import { RingGraphComponent } from './components/ring-graph/ring-graph.component';
 import { AttitudesFormComponent } from './components/attitudes-form/attitudes-form.component';
 import { RouterOutlet } from '@angular/router';
+import { DonutGraphComponent } from './components/donut-graph/donut-graph.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -37,8 +38,8 @@ import { RouterOutlet } from '@angular/router';
     AchievementsFormComponent,
     ExperienceFormComponent,
     StudiesFormComponent,
-    RingGraphComponent,
-    AttitudesFormComponent
+    AttitudesFormComponent,
+    DonutGraphComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +47,8 @@ import { RouterOutlet } from '@angular/router';
     FontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterOutlet
+    RouterOutlet,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
