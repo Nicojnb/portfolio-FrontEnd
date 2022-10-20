@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IAttitudes } from 'src/app/model/IAttitudes';
 import { AttitudesService } from 'src/app/services/attitudes.service';
-import { ISvg } from 'src/app/model/ISvg';
 
 @Component({
   selector: 'app-attitudes',
@@ -33,26 +32,25 @@ export class AttitudesComponent implements OnInit {
     this.changeState(true);
   }
 
-  edit(study: IAttitudes): void {
-    this.outAttitudes = study;
+  edit(attitude: IAttitudes): void {
+    this.outAttitudes = attitude;
     this.changeState(false);
   }
 
-
-  update(study: IAttitudes){
+  update(attitude: IAttitudes){
     console.log("recibido")
-    if(study.id===0)
-      this.attitudServ.postAttitud(study).subscribe();
+    if(attitude.id===0)
+      this.attitudServ.postAttitud(attitude).subscribe();
     else
-    this.attitudServ.putAttitud(study).subscribe();
+    this.attitudServ.putAttitud(attitude).subscribe();
     this.changeState(false);
   }
 
-  delete(study: IAttitudes){
-    this.attitudServ.deleteAttitud(study).subscribe(
+  delete(attitude: IAttitudes){
+    this.attitudServ.deleteAttitud(attitude).subscribe(
       () => {
         this.attitudes = this.attitudes.filter( (t) =>{
-          return t.id !== study.id })
+          return t.id !== attitude.id })
     })
     alert("Eliminado ☹");
   }

@@ -18,10 +18,12 @@
             <div class="col-md-auto text-center" *ngFor="let attitude of attitudes">
                 <div class="row" >
                     <div class="col text-center" id="graph">
-                        <img class="graph" src="assets/images/yo.jpg">
-                        <p>
-                            {{attitude.name}} {{attitude.description}} {{attitude.percent}}
-                        </p>
+                        <!-- -->
+                        <app-donut-graph                        
+                        [attitude]="attitude"
+                        (closeForm)="changeState(false)"
+                        (attitudeChange)="update(attitude)"
+                        ></app-donut-graph>
                     </div>
                     <div class="col text-left">
                         <div class="btn-add">

@@ -34,18 +34,21 @@ export class ExperienceFormComponent implements OnInit {
 
   setValue() {
     if(this.exp.start && this.exp.end){
-    this.form.setValue({
-      donde:this.exp.name,
-      rol:this.exp.role,
-      inicio:this.exp.start,
-      fin:this.exp.end
-    })}else{
-    this.form.patchValue({
-      donde:this.exp.name,
-      rol:this.exp.role
-    })
-  }
-    //this.form.patchValue({tipo: 'Carson', titulo: 'Drew'});
+      console.log("1:"+this.exp.start.getFullYear)
+      console.log("2:"+this.exp.start.toDateString)
+      console.log("3:"+this.exp.start.toLocaleDateString)
+      this.form.setValue({
+        donde:this.exp.name,
+        rol:this.exp.role,
+        inicio:(this.exp.start.getFullYear),
+        fin:this.exp.end.toLocaleDateString
+    })}
+    else{
+      this.form.patchValue({
+        donde:this.exp.name,
+        rol:this.exp.role
+      })
+    }
   }
 
   ngOnInit(): void {
