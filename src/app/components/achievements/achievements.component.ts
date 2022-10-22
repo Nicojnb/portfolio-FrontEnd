@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ACHIEVEMENTS } from 'src/assets/data/Achievements';
 import { IAchievements } from 'src/app/model/IAchievements';
 import { AchievService } from 'src/app/services/achiev.service';
 

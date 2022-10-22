@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ISocials } from 'src/app/model/ISocials';
-import { SOCIALS } from 'src/assets/data/Socials';
 import { SocialsService } from 'src/app/services/socials.service';
 
 @Component({

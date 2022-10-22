@@ -1,1 +1,22 @@
-<p>attitudes-form works!</p>
+<form [formGroup]="form" (ngSubmit)="onUpdate($event)">
+    <div>
+        <label for="">Habilidad:</label>
+        <input type="text"
+        formControlName="nombre"
+        >
+    </div>
+    <div>
+        <label for="">Descripción:</label>
+        <input type="text"
+        formControlName="descripcion"
+        >
+    </div>
+    <div>
+        <label for="">Porcentaje:</label>
+        <input type="text"
+        formControlName="porcentaje"
+        >
+    </div>
+    <button type="submit" class="btn btn-success" >Confirmar</button>
+    <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
+</form>

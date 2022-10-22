@@ -1,4 +1,4 @@
-<div class="card mat-card">
+<div class="card mat-card" id="">
     <div class="card-titles">
         <div class="container-fluid">
             <div class="row">
@@ -7,27 +7,41 @@
                 </div>
                 <div class="col text-right">
                     <div class="btn btn-add">
-                        <a href="portfolio#form" class="" (click)="add()"><i class="fa fa-plus"></i></a>
+                        <a href="/portfolio#attitude" class="" (click)="add()"><i class="fa fa-plus"></i></a>
                     </div>
+                </div>
+            </div>
+            <div name="form" id="attitude">
+                <div *ngIf="showForm">
+                    <div *ngIf="outAttitude.id; else elseBlock">Modificar</div>
+                    <ng-template #elseBlock>Agregar</ng-template>
+                        <app-attitudes-form
+                            [attitude]="outAttitude"
+                            (closeForm)="changeState(false)"
+                            (attitudeChange)="update(outAttitude)"
+                        ></app-attitudes-form>
                 </div>
             </div>
         </div>
     </div>
     <div >
-        <div class="row" >
+        <div class="row" id="extern">
             <div class="col-md-auto text-center" *ngFor="let attitude of attitudes">
-                <div class="row" >
+                <div class="row" id="intern">
                     <div class="col text-center" id="graph">
                         <!-- -->
                         <app-donut-graph                        
-                        [attitude]="attitude"
-                        (closeForm)="changeState(false)"
-                        (attitudeChange)="update(attitude)"
+                            [attitude]="attitude"
+                            (closeForm)="changeState(false)"
+                            (attitudeChange)="update(attitude)"
                         ></app-donut-graph>
                     </div>
-                    <div class="col text-left">
+                    <div class="col text-left" id="btns">
                         <div class="btn-add">
-                            <a href="#" class="btn btn-right"><i class="fa fa-pen"></i></a>
+                            <a href="/portfolio#attitude" class="btn btn-right" (click)="edit(attitude)"
+                            ><i class="fa fa-pen"></i></a>
+                            <a href="/portfolio#attitude" class="btn btn-right delete"
+                                (click)="delete(attitude)"><i class="fa fa-trash"></i></a>
                         </div>
                     </div>
                 </div>

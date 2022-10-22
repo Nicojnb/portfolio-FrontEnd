@@ -16,13 +16,13 @@
         <div class="col-lg-8">
           <h2 class="fw-bold mb-5">Iniciar Sessión</h2>
           <!-- Reactive Form  -->
-          <form [formGroup]="form"> 
-            <!-- Email input -->
+          <form [formGroup]="form">
             <div class="form-outline mb-4">
-              <input type="email" formControlName="email" id="form3Example3" class="form-control" />
-              <label class="form-label" for="form3Example3">Dirección de email</label>
-              <!-- mini validacion -->
-              <div *ngIf="Email?.errors && Email?.touched">
+              <!-- Email input -->
+              <input type="email" formControlName="email" id="form3Example3" class="form-control"
+               [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}"/>
+               <!-- mini validacion -->
+               <div *ngIf="Email?.errors && Email?.touched">
                 <p *ngIf="Email?.hasError('required')" class="text-danger">
                   El email es requerido.
                 </p>
@@ -30,11 +30,12 @@
                   El formato del email debe ser válido.
                 </p>
               </div>
+              <label class="form-label" for="form3Example3">Dirección de email</label>
             </div>
             <!-- Password input -->
             <div class="form-outline mb-4">
-              <input type="password" formControlName="password" id="form3Example4" class="form-control" />
-              <label class="form-label" for="form3Example4">Contraseña</label>
+              <input type="password" formControlName="password" id="form3Example4" class="form-control"
+              [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}"/>
               <!-- mini validacion -->
               <div *ngIf="Password?.errors && Password?.touched">
                 <p *ngIf="Password?.hasError('required')" class="text-danger">
@@ -44,6 +45,7 @@
                   La contraseña debe tener al menos 8 caracteres.
                 </p>
               </div>
+              <label class="form-label" for="form3Example4">Contraseña</label>
             </div>
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary btn-block mb-4">

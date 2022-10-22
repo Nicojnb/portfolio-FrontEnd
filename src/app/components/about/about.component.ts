@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-about',
@@ -7,22 +8,48 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
+  @Input() about?: string;
+  @Output() aboutChange: EventEmitter <string> = new EventEmitter;
 
   protected showForm: boolean = true;
 
-  changeState(): void {
-    this.showForm=!this.showForm;
-}
+  protected formGroup:FormGroup;
 
-  @Input() about?: string;
+  constructor(private formBuilder: FormBuilder) { 
+    this.formGroup = this.formBuilder.group({
+      about: ''
+    });
+  }
 
-  constructor() { }
+  setValue() {
+    this.formGroup.setValue({
+      about : this.about
+     });
+  }
+
+  ngOnChanges(): void{
+    this.setValue();
+  }
 
   ngOnInit(): void {
   }
 
+  changeState(value: boolean): void {
+    this.showForm=value;
+  }
+
   onUpdate() {
-    throw new Error('Method not implemented.');
+
+    if(this.formGroup.get('about')?.value)
+    this.about = this.formGroup.get('about')?.value;
+    this.aboutChange.emit(this.about);
+    this.changeState(true)
+  }
+
+  onCancel() {
+    this.formGroup.reset();
+    this.setValue();
+    this.changeState(true);
   }
 
 }

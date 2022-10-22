@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ChartType , ChartData, Chart, Point, ChartDataset } from 'chart.js';
-import { Subscriber } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { ChartType , ChartData } from 'chart.js';
 import { IAttitudes } from 'src/app/model/IAttitudes';
 
 @Component({
@@ -33,7 +32,7 @@ export class DonutGraphComponent implements OnInit {
       labels: [this.attitude.name,'mejora posible'] , datasets: [{
         data:[this.attitude.percent,(100-this.attitude.percent)], 
         /*borderColor:["#f38b4a"],*/ 
-        backgroundColor:["#86C7F3","#FFA1B5"]
+        backgroundColor:["#256D85","#06283D"]
       }]
     }
   }

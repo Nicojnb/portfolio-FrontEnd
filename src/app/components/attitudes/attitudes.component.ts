@@ -11,7 +11,7 @@ export class AttitudesComponent implements OnInit {
 
   protected attitudes: IAttitudes[] = [];
 
-  protected outAttitudes: IAttitudes = { id: 0, name: '',
+  protected outAttitude: IAttitudes = { id: 0, name: '',
     description: '', percent: 0, userId: 0 };
 
   protected showForm: boolean = false;
@@ -27,18 +27,19 @@ export class AttitudesComponent implements OnInit {
   }
 
   add(): void {
-    this.outAttitudes = { id: 0, name: '',
+    this.outAttitude = { id: 0, name: '',
     description: '', percent: 0, userId: 0 };
     this.changeState(true);
   }
 
   edit(attitude: IAttitudes): void {
-    this.outAttitudes = attitude;
-    this.changeState(false);
+    this.outAttitude = attitude;
+    this.changeState(true);
+    
+    console.log("recibido")
   }
 
   update(attitude: IAttitudes){
-    console.log("recibido")
     if(attitude.id===0)
       this.attitudServ.postAttitud(attitude).subscribe();
     else

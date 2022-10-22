@@ -2,25 +2,28 @@
     <div class="card-titles">
         <div class="container-fluid">
             <div class="row">
-              <div class="col text-left">
+                <div class="col text-left">
                     <h2>Acerca de mí</h2>
-              </div>
-              <div class="col text-right">
-                <div class="btn-edit" onclick="editAbout()">
-                    <button class="btn" (click)="changeState()"><i class="fa fa-pen"></i></button>
                 </div>
-              </div>
+                <div class="col text-right">
+                    <div class="btn-edit" > <!--onclick="editAbout()">-->
+                        <button class="btn" (click)="changeState(false)"><i class="fa fa-pen"></i></button>
+                    </div>
+                </div>
             </div>
             <div *ngIf="showForm; else elseBlock">{{about}}</div>
             <ng-template #elseBlock>
-                <form action="">
+                <form action="" [formGroup]="formGroup">
                     <div class="row">
-                        <textarea name="" id="" rows="4" value={{about}}></textarea>
+                        <textarea name="" id="about"
+                        formControlName="about"
+                         cols="" rows="4"></textarea>
                     </div>
                     <div class="row">
                         <div class="col text-right">
                             <div class="col">
                                 <button type="button" class="btn btn-success" (click)="onUpdate()">Confirmar</button>
+                                <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
                             </div>
                         </div>
                     </div>
