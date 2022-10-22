@@ -95,11 +95,9 @@ ul.items-list li div.data-container a{
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 .btn.delete{
     color: red;
 }
-
 .btn.edit{
     color: #0d6efd;
 }

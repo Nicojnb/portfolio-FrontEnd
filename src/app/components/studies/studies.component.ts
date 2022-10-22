@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IStudies } from 'src/app/model/IStudies';
 import { StudiesService } from 'src/app/services/studies.service';
-import { STUDIES } from 'src/assets/data/Studies';
 
 @Component({
   selector: 'app-studies',

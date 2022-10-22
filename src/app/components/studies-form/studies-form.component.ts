@@ -49,15 +49,12 @@ export class StudiesFormComponent implements OnInit {
     //this.form.patchValue({tipo: 'Carson', titulo: 'Drew'});
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
   ngOnChanges(): void{
     this.setValue();
   }
 
-  
   onCancel() {
     this.form.reset();
     this.setValue();
@@ -89,6 +86,5 @@ export class StudiesFormComponent implements OnInit {
     this.form.reset();
 
   }
-
 
 }

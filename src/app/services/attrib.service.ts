@@ -33,7 +33,7 @@ export class AttribService {
     );
   }
 
-  putStudy(attrib: IAttributes): Observable <IAttributes>{
+  putAttrib(attrib: IAttributes): Observable <IAttributes>{
     const url= `${this.apiURL}${'edit'}`
     return this.http.put<IAttributes>(url, attrib, httpOptions);
   }
