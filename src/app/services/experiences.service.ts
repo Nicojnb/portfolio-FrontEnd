@@ -6,7 +6,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type': 'application/json'
   })
 }
 
@@ -14,34 +14,34 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ExperiencesService {
-  
+
   private apiURL = "http://127.0.0.1:8080/experience/";
 
   constructor(private http: HttpClient) { }
-  
-  getExp(): Observable <IExperience[]>{
+
+  getExp(): Observable<IExperience[]> {
     return this.http.get<IExperience[]>(this.apiURL).pipe(
       catchError((error: HttpErrorResponse) => {
         console.warn(
-            'Error',
-            error
-          );
-          return of(EXPERIENCE);
-        })
+          'Error',
+          error
+        );
+        return of(EXPERIENCE);
+      })
     )
   }
 
-  postExp(exp: IExperience): Observable <IExperience> {
+  postExp(exp: IExperience): Observable<IExperience> {
     return this.http.post<IExperience>(`${this.apiURL}add`, exp, httpOptions);
   }
 
-  putStudy(exp: IExperience): Observable <IExperience>{
-    const url= `${this.apiURL}${'edit'}`
+  putStudy(exp: IExperience): Observable<IExperience> {
+    const url = `${this.apiURL}${'edit'}`
     return this.http.put<IExperience>(url, exp, httpOptions);
   }
 
-  deleteExp(exp: IExperience): Observable <IExperience>{
-    const url= `${this.apiURL}${'delete'}/${exp.id}`
+  deleteExp(exp: IExperience): Observable<IExperience> {
+    const url = `${this.apiURL}${'delete'}/${exp.id}`
     return this.http.delete<IExperience>(url);
   }
 

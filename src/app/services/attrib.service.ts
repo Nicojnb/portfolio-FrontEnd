@@ -6,7 +6,7 @@ import { IAttributes } from '../model/IAttributes';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type': 'application/json'
   })
 }
 
@@ -15,26 +15,26 @@ const httpOptions = {
 })
 
 export class AttribService {
-  
+
   private apiURL = "http://127.0.0.1:8080/attrib/";
 
   constructor(private http: HttpClient) { }
 
-  getAttrib(): Observable <IAttributes[]> {
+  getAttrib(): Observable<IAttributes[]> {
     //console.log(this.http.get<IAttributes>(this.apiURL+1000));
     return this.http.get<IAttributes[]>(this.apiURL).pipe(
       catchError((error: HttpErrorResponse) => {
         console.warn(
-            'Error',
-            error
-          );
-          return of(ATTRIBUTES);
-        })
+          'Error',
+          error
+        );
+        return of(ATTRIBUTES);
+      })
     );
   }
 
-  putAttrib(attrib: IAttributes): Observable <IAttributes>{
-    const url= `${this.apiURL}${'edit'}`
+  putAttrib(attrib: IAttributes): Observable<IAttributes> {
+    const url = `${this.apiURL}${'edit'}`
     return this.http.put<IAttributes>(url, attrib, httpOptions);
   }
 }

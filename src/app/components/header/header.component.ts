@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ISocials } from 'src/app/model/ISocials';
 import { SocialsService } from 'src/app/services/socials.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-header',
@@ -11,12 +12,17 @@ export class HeaderComponent implements OnInit {
 
   @Input() name: string = "";
 
-  socials: ISocials[] = [];
+  protected socials: ISocials[] = [];
 
-  constructor(private socServ: SocialsService) { }
+  protected isLogged = false;
+
+  constructor(private socServ: SocialsService, private tokenServ: TokenService) { }
 
   ngOnInit(): void {
-    this.socServ.getSoc().subscribe((value: ISocials[]) => this.socials=value);
+    this.socServ.getSoc().subscribe((value: ISocials[]) => this.socials = value);
+    if (this.tokenServ.getToken())
+      this.isLogged = true;
+    else this.isLogged = false;
   }
 
 }

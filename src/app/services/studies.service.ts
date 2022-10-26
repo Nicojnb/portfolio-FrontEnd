@@ -6,7 +6,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type': 'application/json'
   })
 }
 
@@ -33,38 +33,38 @@ export class StudiesService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-  getStudy(): Observable <IStudies[]>{
+  getStudy(): Observable<IStudies[]> {
     return this.http.get<IStudies[]>(this.apiURL).pipe(
       catchError((error: HttpErrorResponse) => {
         console.warn(
-            'Error',
-            error
-          );
-          return of(STUDIES);
-        })
+          'Error',
+          error
+        );
+        return of(STUDIES);
+      })
     )
   }
 
-  postStudy(study: IStudies): Observable <IStudies>{
-    const url= `${this.apiURL}${"add"}`
+  postStudy(study: IStudies): Observable<IStudies> {
+    const url = `${this.apiURL}${"add"}`
     return this.http.post<IStudies>(url, study, httpOptions)//return this.httpClient.post<IOrder>(this.apiUrl+"agregar", order)
-    .pipe(
-      //catchError(this.handleError('postOrder', order))
-      catchError(this.handleError)
-    );
+      .pipe(
+        //catchError(this.handleError('postOrder', order))
+        catchError(this.handleError)
+      );
   }
 
-  putStudy(study: IStudies): Observable <IStudies>{
-    const url= `${this.apiURL}${'edit'}`;
+  putStudy(study: IStudies): Observable<IStudies> {
+    const url = `${this.apiURL}${'edit'}`;
     return this.http.put<IStudies>(url, study, httpOptions)//return this.httpClient.post<IOrder>(this.apiUrl+"agregar", order)
-    .pipe(
-      //catchError(this.handleError('postOrder', order))
-      catchError(this.handleError)
-    );
+      .pipe(
+        //catchError(this.handleError('postOrder', order))
+        catchError(this.handleError)
+      );
   }
 
-  deleteStudy(study: IStudies): Observable <IStudies>{
-    const url= `${this.apiURL}${'delete'}/${study.id}`
+  deleteStudy(study: IStudies): Observable<IStudies> {
+    const url = `${this.apiURL}${'delete'}/${study.id}`
     return this.http.delete<IStudies>(url);
   }
 

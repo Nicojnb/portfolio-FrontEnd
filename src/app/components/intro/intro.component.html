@@ -1,27 +1,38 @@
 <app-header [name]="this.attributes.firstName+' '+this.attributes.lastName" ></app-header>
-<div class="card mat-card" id="first-card">
-    <div  class="">
+<div class="card mat-card" id="start">
+    <div class="">
         <div id="profile-background"><img src="{{attributes.urlBack}}"></div>
         <div id="info" style="padding: 16px">
             <div id="info-img">
                 <img mat-card-image class="img-fluid rounded-circle profile-image " src="{{attributes.urlImage}}" alt="Generic placeholder image">
-                <div class="btn-edit"><a href="#" class="btn-right"><i class="fa fa-pen"></i></a></div>
-            </div>
-            <div id="info-data">
-                <div>
-                    <h1>{{attributes.firstName}} {{attributes.lastName}}</h1>
-                    <div id="info-company">{{attributes.prof}}</div>
-                    <div id="info-contact">
-                        <span class="h4">{{attributes.state}} {{attributes.country}}</span>
-                        <span class="h4"><a href="mailto:mi_correo@servidor.com"> Información de contacto </a></span>
-                    </div>
+                <div class="btn-edit">
+                    <a href="./portfolio#start" class="btn-right" (click)="add()"><i class="fa fa-pen"></i></a>
                 </div>
-                <ul id="info-details">
-                    <li><a href="http://www.frt.utn.edu.ar/">
-                        <img src="assets/images/logo_favicon.png">
-                        <h2>{{attributes.university}}</h2>
-                    </a></li>
-                </ul>
+            </div>
+            <div >
+                <div *ngIf="showForm; else elseBlock">
+                    <app-intro-form
+                            [attrib]="outAttrib"
+                            (closeForm)="changeState(false)"
+                            (expChange)="update(outAttrib)"
+                    ></app-intro-form>
+                </div>
+                <ng-template #elseBlock>
+                    <div>
+                        <h1>{{attributes.firstName}} {{attributes.lastName}}</h1>
+                        <div id="info-company">{{attributes.prof}}</div>
+                        <div id="info-contact">
+                            <span class="h4">{{attributes.state}} {{attributes.country}}</span>
+                            <span class="h4"><a href="mailto:mi_correo@servidor.com"> Información de contacto </a></span>
+                        </div>
+                    </div>
+                    <ul id="info-details">
+                        <li><a href="http://www.frt.utn.edu.ar/">
+                            <img src="assets/images/logo_favicon.png">
+                            <h2>{{attributes.university}}</h2>
+                        </a></li>
+                    </ul>
+                </ng-template>
             </div>
             <div id="info-actions">
                 <button type="button" class="btn btn-primary">Tengo interés en</button>
@@ -30,7 +41,7 @@
         </div>
     </div>
 </div>
-<app-about [(about)]="attributes.about"
-(aboutChange)="updateAbout()"
-
+<app-about
+    [(about)]="attributes.about"
+    (aboutChange)="updateAbout()"
 ></app-about>

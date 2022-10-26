@@ -6,7 +6,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type': 'application/json'
   })
 }
 
@@ -19,19 +19,19 @@ export class SocialsService {
 
   constructor(private http: HttpClient) { }
 
-  getSoc(): Observable <ISocials[]> {
+  getSoc(): Observable<ISocials[]> {
     return this.http.get<ISocials[]>(this.apiURL).pipe(
       catchError((error: HttpErrorResponse) => {
         console.warn(
-            'Error',
-            error
-          );
-          return of(SOCIALS);
-        })
+          'Error',
+          error
+        );
+        return of(SOCIALS);
+      })
     )
   }
-  deleteSoc(social: ISocials): Observable <ISocials>{
-    const url= `${this.apiURL}${'delete'}/${social.id}`
+  deleteSoc(social: ISocials): Observable<ISocials> {
+    const url = `${this.apiURL}${'delete'}/${social.id}`
     return this.http.delete<ISocials>(url);
   }
 

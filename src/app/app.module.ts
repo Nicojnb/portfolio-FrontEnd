@@ -22,6 +22,9 @@ import { AttitudesFormComponent } from './components/attitudes-form/attitudes-fo
 import { RouterOutlet } from '@angular/router';
 import { DonutGraphComponent } from './components/donut-graph/donut-graph.component';
 import { NgChartsModule } from 'ng2-charts';
+import { IntroFormComponent } from './components/intro-form/intro-form.component';
+import { NewUserComponent } from './components/auth/new-user/new-user.component';
+import { interceptProvider } from './services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { NgChartsModule } from 'ng2-charts';
     ExperienceFormComponent,
     StudiesFormComponent,
     AttitudesFormComponent,
-    DonutGraphComponent
+    DonutGraphComponent,
+    IntroFormComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,7 @@ import { NgChartsModule } from 'ng2-charts';
     RouterOutlet,
     NgChartsModule
   ],
-  providers: [],
+  providers: [interceptProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
