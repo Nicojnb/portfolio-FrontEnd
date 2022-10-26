@@ -5,7 +5,7 @@ export const ATTRIBUTES: IAttributes[] = [
         id: 1,
         firstName: "Nicolás",
         lastName: "Bautista",
-        prof: "Estudiante",
+        prof: "Desarrollador Full-Stack Jr.",
         urlImage: "assets/images/yo.jpg",
         urlBack: "assets/images/background.png",
         state: "Tucumán",

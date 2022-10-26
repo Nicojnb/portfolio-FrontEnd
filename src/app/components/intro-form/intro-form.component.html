@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="onUpdate($event)">
+    <div id="info-data">
+        <div>
+            <h1>Nombre: <input type="text" formControlName="nombre"> 
+                Apellido: <input type="text" formControlName="apellido"> </h1>
+            <div id="info-company">Profesión: <input type="text" formControlName="prof"></div>
+            <div id="info-contact">
+                <span class="h4">Provincia: <input type="text" formControlName="prov"> 
+                    País: <input type="text" formControlName="pais"></span>
+                <span class="h4"><a href="mailto:mi_correo@servidor.com"> Información de contacto </a></span>
+            </div>
+        </div>
+        <ul id="info-details">
+            <li><a href="http://www.frt.utn.edu.ar/">
+                <img src="assets/images/logo_favicon.png">
+                <h2>Universidad: <input type="text" formControlName="univ"></h2>
+            </a></li>
+        </ul>
+    </div>
+    <button type="submit" class="btn btn-success" >Confirmar</button>
+    <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
+</form>

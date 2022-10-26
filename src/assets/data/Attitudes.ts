@@ -25,7 +25,7 @@ export const ATTITUDES: IAttitudes[] = [
     {
         id: 4,
         name: "Trabajo en equipo",
-        description: "",
+        description: "compañerismo",
         percent: 100,
         userId: 5456464
     },
