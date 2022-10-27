@@ -1,9 +1,30 @@
 import { Injectable } from '@angular/core';
+import { waitForAsync } from '@angular/core/testing';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GuardService {
+export class GuardService implements CanActivate {
 
-  constructor() { }
+  myrole!: string;
+
+  constructor(private tokenServ: TokenService, private router: Router) { }
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    const expectedRol = route.data['expectedRol'];
+    const roles = this.tokenServ.getAuthorities();
+    this.myrole = 'user';
+    roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.myrole = 'admin';
+      }
+    });
+    if (!this.tokenServ.getToken() || expectedRol.indexOf(this.myrole) === -1) {
+      this.router.navigate(['/']);
+      return false;
+    }
+    return true;
+  }
 }

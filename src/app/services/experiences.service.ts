@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of, retry } from 'rxjs';
 import { IExperience } from '../model/IExperience';
 import { EXPERIENCE } from 'src/assets/data/Experience';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
@@ -20,7 +20,7 @@ export class ExperiencesService {
   constructor(private http: HttpClient) { }
 
   getExp(): Observable<IExperience[]> {
-    return this.http.get<IExperience[]>(this.apiURL).pipe(
+    return this.http.get<IExperience[]>(this.apiURL).pipe(retry(3),
       catchError((error: HttpErrorResponse) => {
         console.warn(
           'Error',

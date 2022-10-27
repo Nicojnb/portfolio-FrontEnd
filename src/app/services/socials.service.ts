@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of, retry } from 'rxjs';
 import { ISocials } from '../model/ISocials';
 import { SOCIALS } from 'src/assets/data/Socials';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
@@ -20,7 +20,7 @@ export class SocialsService {
   constructor(private http: HttpClient) { }
 
   getSoc(): Observable<ISocials[]> {
-    return this.http.get<ISocials[]>(this.apiURL).pipe(
+    return this.http.get<ISocials[]>(this.apiURL).pipe(retry(3),
       catchError((error: HttpErrorResponse) => {
         console.warn(
           'Error',

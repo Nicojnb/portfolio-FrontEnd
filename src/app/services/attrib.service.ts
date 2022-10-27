@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of, retry } from 'rxjs';
 import { ATTRIBUTES } from 'src/assets/data/Attributes';
 import { IAttributes } from '../model/IAttributes';
 
@@ -22,7 +22,7 @@ export class AttribService {
 
   getAttrib(): Observable<IAttributes[]> {
     //console.log(this.http.get<IAttributes>(this.apiURL+1000));
-    return this.http.get<IAttributes[]>(this.apiURL).pipe(
+    return this.http.get<IAttributes[]>(this.apiURL).pipe(retry(3),
       catchError((error: HttpErrorResponse) => {
         console.warn(
           'Error',

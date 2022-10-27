@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, throwError } from 'rxjs';
+import { catchError, Observable, of, retry, throwError } from 'rxjs';
 import { IStudies } from '../model/IStudies';
 import { STUDIES } from 'src/assets/data/Studies';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
@@ -34,7 +34,7 @@ export class StudiesService {
   }
 
   getStudy(): Observable<IStudies[]> {
-    return this.http.get<IStudies[]>(this.apiURL).pipe(
+    return this.http.get<IStudies[]>(this.apiURL).pipe(retry(3),
       catchError((error: HttpErrorResponse) => {
         console.warn(
           'Error',

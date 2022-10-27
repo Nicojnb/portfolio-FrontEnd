@@ -23,28 +23,26 @@ import { RouterOutlet } from '@angular/router';
 import { DonutGraphComponent } from './components/donut-graph/donut-graph.component';
 import { NgChartsModule } from 'ng2-charts';
 import { IntroFormComponent } from './components/intro-form/intro-form.component';
-import { NewUserComponent } from './components/auth/new-user/new-user.component';
 import { interceptProvider } from './services/interceptor.service';
 
 @NgModule({
   declarations: [
+    PortfolioComponent,
+    LoginComponent,
     AppComponent,
-    HeaderComponent,
-    AboutComponent,
     IntroComponent,
     ExperienceComponent,
     AttitudesComponent,
     StudiesComponent,
     AchievementsComponent,
-    LoginComponent,
-    PortfolioComponent,
+    HeaderComponent,
+    AboutComponent,
+    DonutGraphComponent,
     AchievementsFormComponent,
     ExperienceFormComponent,
     StudiesFormComponent,
     AttitudesFormComponent,
-    DonutGraphComponent,
-    IntroFormComponent,
-    NewUserComponent
+    IntroFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of, retry } from 'rxjs';
 import { IAchievements } from '../model/IAchievements';
 import { ACHIEVEMENTS } from '../../assets/data/Achievements';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
@@ -20,7 +20,7 @@ export class AchievService {
   constructor(private http: HttpClient) { }
 
   getAchiev(): Observable<IAchievements[]> {
-    return this.http.get<IAchievements[]>(this.apiURL).pipe(
+    return this.http.get<IAchievements[]>(this.apiURL).pipe(retry(3),
       catchError((error: HttpErrorResponse) => {
         console.warn(
           'Error',
