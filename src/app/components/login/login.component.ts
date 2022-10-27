@@ -44,12 +44,12 @@ export class LoginComponent implements OnInit {
 
   setValue() {
     this.form.setValue({
-      userName:"",
-      password:""
-     });
+      userName: "",
+      password: ""
+    });
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.setValue();
     this.form.reset();
   }
@@ -60,8 +60,11 @@ export class LoginComponent implements OnInit {
 
     if (this.form.get('password')?.value)
       this.password = this.form.get('password')?.value;
+    this.login(this.userName, this.password);
+  }
 
-    this.loginUser = new Login(this.userName, this.password);
+  login(user: string, pass: string): void {
+    this.loginUser = new Login(user, pass);
     this.authServ.logIn(this.loginUser).subscribe(
       data => {
         this.isLogged = true;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of, retry } from 'rxjs';
 import { IAttitudes } from '../model/IAttitudes';
 import { ATTITUDES } from 'src/assets/data/Attitudes';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
@@ -20,7 +20,7 @@ export class AttitudesService {
   constructor(private http: HttpClient) { }
 
   getAttitud(): Observable<IAttitudes[]> {
-    return this.http.get<IAttitudes[]>(this.apiURL).pipe(
+    return this.http.get<IAttitudes[]>(this.apiURL).pipe(retry(3),
       catchError((error: HttpErrorResponse) => {
         console.warn(
           'Error',
