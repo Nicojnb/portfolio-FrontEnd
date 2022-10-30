@@ -5,7 +5,7 @@
         <div id="info" style="padding: 16px">
             <div id="info-img">
                 <img mat-card-image class="img-fluid rounded-circle profile-image " src="{{attributes.urlImage}}" alt="Generic placeholder image">
-                <div class="btn-edit">
+                <div class="btn-edit" *ngIf="admin">
                     <a href="./portfolio#start" class="btn-right" (click)="add()"><i class="fa fa-pen"></i></a>
                 </div>
             </div>
@@ -42,6 +42,7 @@
     </div>
 </div>
 <app-about
+    [admin]="admin"
     [(about)]="attributes.about"
     (aboutChange)="updateAbout()"
 ></app-about>

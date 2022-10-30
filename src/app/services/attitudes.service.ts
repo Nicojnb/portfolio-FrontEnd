@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class AttitudesService {
 
-  private apiURL = "http://127.0.0.1:8080/attitud/";
+  private apiURL = "http://4.246.221.228:8080/attitud/";
 
   constructor(private http: HttpClient) { }
 

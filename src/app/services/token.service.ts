@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Login } from '../model/login';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,7 @@ export class TokenService {
   private USERNAME_KEY: string = 'AuthUserName';
   private AUTHORITIES_KEY: string = 'AuthAuthorities';
 
-  constructor() { }
+  constructor(private authServ: AuthService, private router: Router) { }
 
   public setToken(token: string): void {
     window.sessionStorage.removeItem(this.TOKEN_KEY);
@@ -39,8 +42,8 @@ export class TokenService {
   public getAuthorities(): string[] {
     let roles = [];
     if (sessionStorage.getItem(this.AUTHORITIES_KEY)) {
-      JSON.parse(sessionStorage.getItem(this.AUTHORITIES_KEY) as string).forEach((element: { element: string; }) => {
-        this.roles.push(element.element)
+      JSON.parse(sessionStorage.getItem(this.AUTHORITIES_KEY) as string).forEach((authority: { authority: string; }) => {
+        this.roles.push(authority.authority)
       });
     }
     return this.roles;
@@ -50,4 +53,21 @@ export class TokenService {
     window.sessionStorage.clear();
   }
 
+  public autoLogin(): void {
+    console.log("auto");
+    
+    let loginUser = new Login('Anonymous', 'Anonymous');
+    this.authServ.logIn(loginUser).subscribe(
+      (data: { token: string; userName: string; authorities: string[]; }): void => {
+        this.setToken(data.token);
+        this.setUserName(data.userName);
+        this.setAuthorities(data.authorities);
+        this.roles = data.authorities;
+        this.router.navigate(['/portfolio']);
+      },
+      (err: { error: { message: any; }; }) => {
+        console.error(err.error.message);
+      }
+    );
+  }
 }

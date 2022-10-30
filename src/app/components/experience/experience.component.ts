@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IExperience } from 'src/app/model/IExperience';
 import { ExperiencesService } from 'src/app/services/experiences.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-experience',
@@ -15,10 +16,26 @@ export class ExperienceComponent implements OnInit {
 
   protected showForm: boolean = false;
 
-  constructor(private expServ: ExperiencesService) { }
+  private roles: string[] = [];
+
+  protected admin: boolean = false;
+
+  constructor(private expServ: ExperiencesService, private tokenServ: TokenService) { }
 
   ngOnInit(): void {
-    this.expServ.getExp().subscribe((value: IExperience[]) => this.experience = value);
+    this.roles = this.tokenServ.getAuthorities();
+    if (this.roles.length) {
+      this.expServ.getExp().subscribe((value: IExperience[]) => this.experience = value);
+      this.isAdmin();
+    }
+  }
+
+  isAdmin(): void {
+    this.roles.forEach((rol: string) => {
+      if (rol === 'ROLE_ADMIN') {
+        this.admin = true;
+      }
+    });
   }
 
   changeState(value: boolean): void {

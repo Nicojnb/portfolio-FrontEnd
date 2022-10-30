@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class ExperiencesService {
 
-  private apiURL = "http://127.0.0.1:8080/experience/";
+  private apiURL = "http://4.246.221.228:8080/experience/";
 
   constructor(private http: HttpClient) { }
 
