@@ -7,7 +7,7 @@
         </div>
         <div class="col text-right">
           <div class="btn-add">
-            <a href="./portfolio#study" class="" (click)="add()"><i class="fa fa-plus"></i></a>
+            <a href="./portfolio#study" *ngIf="admin" class="add" (click)="add()"><i class="fa fa-plus"></i></a>
           </div>
         </div>
       </div>
@@ -32,8 +32,8 @@
           </div>
           <div class="col text-right">
             <div class="btn-edit">
-              <a href="./portfolio#study" class="btn btn-right" (click)="edit(study)" ><i class="fa fa-pen"></i></a>
-              <a href="./portfolio#study" class="btn btn-danger btn-right" (click)="delete(study)"><i class="fa fa-trash"></i></a>
+              <a href="./portfolio#study" *ngIf="admin" class="btn btn-right" (click)="edit(study)" ><i class="fa fa-pen"></i></a>
+              <a href="./portfolio#study" *ngIf="admin" class="btn btn-danger btn-right" (click)="delete(study)"><i class="fa fa-trash"></i></a>
             </div>
           </div>
         </div>

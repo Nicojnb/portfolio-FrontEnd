@@ -10,6 +10,7 @@ export class AboutComponent implements OnInit {
 
   @Input() about?: string;
   @Output() aboutChange: EventEmitter <string> = new EventEmitter;
+  @Input() admin?: boolean;
 
   protected showForm: boolean = true;
 

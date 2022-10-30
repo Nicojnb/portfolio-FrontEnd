@@ -6,7 +6,7 @@
                     <h2>Acerca de mí</h2>
                 </div>
                 <div class="col text-right">
-                    <div class="btn-edit" > <!--onclick="editAbout()">-->
+                    <div class="btn-edit" *ngIf="admin"> <!--onclick="editAbout()">-->
                         <button class="btn" (click)="changeState(false)"><i class="fa fa-pen"></i></button>
                     </div>
                 </div>

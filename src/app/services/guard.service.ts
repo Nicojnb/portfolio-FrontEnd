@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { waitForAsync } from '@angular/core/testing';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { TokenService } from './token.service';
 
 @Injectable({
@@ -12,8 +10,9 @@ export class GuardService implements CanActivate {
   myrole!: string;
 
   constructor(private tokenServ: TokenService, private router: Router) { }
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const expectedRol = route.data['expectedRol'];
+    const expectedRol = route.data['expectedRole'];
     const roles = this.tokenServ.getAuthorities();
     this.myrole = 'user';
     roles.forEach(rol => {

@@ -14,15 +14,32 @@ export class HeaderComponent implements OnInit {
 
   protected socials: ISocials[] = [];
 
-  protected isLogged = false;
+  protected admin: boolean = false;
+
+  private roles!: string[];
 
   constructor(private socServ: SocialsService, private tokenServ: TokenService) { }
 
   ngOnInit(): void {
-    this.socServ.getSoc().subscribe((value: ISocials[]) => this.socials = value);
-    if (this.tokenServ.getToken())
-      this.isLogged = true;
-    else this.isLogged = false;
+    this.roles = this.tokenServ.getAuthorities();
+    if (this.roles.length) {
+      this.socServ.getSoc().subscribe((value: ISocials[]) => this.socials = value);
+      this.isAdmin();
+    }
   }
 
+  isAdmin(): void {
+    this.roles.forEach((rol: string) => {
+      if (rol === 'ROLE_ADMIN') {
+        this.admin = true;
+      }
+    });
+  }
+
+
+  onLogOut(): void {
+    this.tokenServ.logOut();
+    this.tokenServ.autoLogin();
+    this.admin = false;
+  }
 }

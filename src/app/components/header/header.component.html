@@ -1,17 +1,21 @@
-<div class="sticky-top">
+<div class="">
     <div class="container-fluid" id="header">
         <div class="row">
             <div class="col text-left" id="name">{{name}}</div>
             <div class="col text-right" id="icons">
-                <ng-container *ngFor="let social of socials">
-                    <div *ngIf="(social.url).length > 0">
-                        <a href="{{social.url}}"><i class="{{social.icon}}"></i>
-                            <Title>"{{social.name}}"</Title>
-                        </a>
-                        <button class="btn btn-success" routerLink="/login">Iniciar Sessión</button>
-                        <button class="btn btn-danger" routerLink="/login">Cerrar Sessión</button>
-                    </div>
-                </ng-container>
+                <div>
+                    <ng-container *ngFor="let social of socials">
+                        <div *ngIf="(social.url).length > 0">
+                            <a href="{{social.url}}"><i class="{{social.icon}}"></i>
+                                <Title>"{{social.name}}"</Title>
+                            </a>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-md-auto text-right" id="icons">
+                <button *ngIf="!admin" class="btn btn-success" routerLink="/login">Iniciar Sessión</button>
+                <button *ngIf="admin" class="btn btn-danger" (click)="onLogOut()">Cerrar Sessión</button>
             </div>
         </div>
     </div>

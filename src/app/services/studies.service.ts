@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class StudiesService {
 
-  private apiURL = "http://127.0.0.1:8080/studies/";
+  private apiURL = "http://4.246.221.228:8080/studies/";
 
   constructor(private http: HttpClient) { }
 

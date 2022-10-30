@@ -16,7 +16,7 @@ const httpOptions = {
 
 export class AttribService {
 
-  private apiURL = "http://127.0.0.1:8080/attrib/";
+  private apiURL = "http://4.246.221.228:8080/attrib/";
 
   constructor(private http: HttpClient) { }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IAchievements } from 'src/app/model/IAchievements';
 import { AchievService } from 'src/app/services/achiev.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-achievements',
@@ -15,10 +16,26 @@ export class AchievementsComponent implements OnInit {
 
   protected outAchiev!: IAchievements;
 
-  constructor(private achievServ: AchievService) { }
+  private roles: string[] = [];
+
+  protected admin: boolean = false;
+
+  constructor(private achievServ: AchievService, private tokenServ: TokenService) { }
 
   ngOnInit(): void {
-    this.achievServ.getAchiev().subscribe((value: IAchievements[]) => this.achievements = value);
+    this.roles = this.tokenServ.getAuthorities();
+    if (this.roles.length) {
+      this.achievServ.getAchiev().subscribe((value: IAchievements[]) => this.achievements = value);
+      this.isAdmin();
+    }
+  }
+
+  isAdmin(): void {
+    this.roles.forEach((rol: string) => {
+      if (rol === 'ROLE_ADMIN') {
+        this.admin = true;
+      }
+    });
   }
 
   changeState(value: boolean): void {
