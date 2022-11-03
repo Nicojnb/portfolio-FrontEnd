@@ -18,7 +18,7 @@ export class AttitudesFormComponent implements OnInit {
     percent: 0,
     userId: 0
   }
-
+  
   @Output() attitudeChange = new EventEmitter<IAttitudes>();
   @Output() closeForm = new EventEmitter<boolean>();
 

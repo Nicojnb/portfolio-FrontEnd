@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IAttitudes } from 'src/app/model/IAttitudes';
 import { AttitudesService } from 'src/app/services/attitudes.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -9,6 +9,8 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./attitudes.component.css']
 })
 export class AttitudesComponent implements OnInit {
+  
+  @Input() admin?: boolean;
 
   protected attitudes: IAttitudes[] = [];
 
@@ -21,7 +23,7 @@ export class AttitudesComponent implements OnInit {
 
   private roles: string[] = [];
 
-  protected admin: boolean = false;
+  //protected admin: boolean = false;
 
   constructor(private attitudServ: AttitudesService, private tokenServ: TokenService) { }
 
@@ -29,7 +31,7 @@ export class AttitudesComponent implements OnInit {
     this.roles = this.tokenServ.getAuthorities();
     if (this.roles.length) {
       this.attitudServ.getAttitud().subscribe((value: IAttitudes[]) => this.attitudes = value);
-      this.isAdmin();
+      //this.isAdmin();
     }
   }
 

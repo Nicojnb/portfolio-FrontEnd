@@ -15,10 +15,10 @@
                 <div *ngIf="showForm">
                     <div *ngIf="outAttitude.id; else elseBlock">Modificar</div>
                     <ng-template #elseBlock>Agregar</ng-template>
-                        <app-attitudes-form
-                            [attitude]="outAttitude"
-                            (closeForm)="changeState(false)"
-                            (attitudeChange)="update(outAttitude)"
+                    <app-attitudes-form
+                        [attitude]="outAttitude"
+                        (closeForm)="changeState(false)"
+                        (attitudeChange)="update(outAttitude)"
                         ></app-attitudes-form>
                 </div>
             </div>
@@ -34,14 +34,14 @@
                             [attitude]="attitude"
                             (closeForm)="changeState(false)"
                             (attitudeChange)="update(attitude)"
-                        ></app-donut-graph>
+                            ></app-donut-graph>
                     </div>
                     <div class="col text-left" id="btns">
                         <div class="btn-add">
                             <a href="./portfolio#attitude" *ngIf="admin" class="btn btn-right" (click)="edit(attitude)"
-                            ><i class="fa fa-pen"></i></a>
+                               ><i class="fa fa-pen"></i></a>
                             <a href="./portfolio#attitude" *ngIf="admin" class="btn btn-right delete"
-                                (click)="delete(attitude)"><i class="fa fa-trash"></i></a>
+                               (click)="delete(attitude)"><i class="fa fa-trash"></i></a>
                         </div>
                     </div>
                 </div>

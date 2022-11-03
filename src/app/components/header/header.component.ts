@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ISocials } from 'src/app/model/ISocials';
 import { SocialsService } from 'src/app/services/socials.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -10,11 +10,14 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() admin?: boolean;
+  @Output() adminChange = new EventEmitter<boolean>();
+
   @Input() name: string = "";
 
   protected socials: ISocials[] = [];
 
-  protected admin: boolean = false;
+  //protected admin: boolean = false;
 
   private roles!: string[];
 
@@ -24,7 +27,7 @@ export class HeaderComponent implements OnInit {
     this.roles = this.tokenServ.getAuthorities();
     if (this.roles.length) {
       this.socServ.getSoc().subscribe((value: ISocials[]) => this.socials = value);
-      this.isAdmin();
+      //this.isAdmin();
     }
   }
 
@@ -41,5 +44,6 @@ export class HeaderComponent implements OnInit {
     this.tokenServ.logOut();
     this.tokenServ.autoLogin();
     this.admin = false;
+    this.adminChange.emit(this.admin);
   }
 }

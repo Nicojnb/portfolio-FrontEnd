@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IExperience } from 'src/app/model/IExperience';
 import { ExperiencesService } from 'src/app/services/experiences.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -10,6 +10,8 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class ExperienceComponent implements OnInit {
 
+  @Input() admin?: boolean;
+
   protected experience: IExperience[] = [];
 
   protected outExperience: IExperience = { id: 0, name: '', role: '', userId: 0 };
@@ -18,7 +20,7 @@ export class ExperienceComponent implements OnInit {
 
   private roles: string[] = [];
 
-  protected admin: boolean = false;
+  //protected admin: boolean = false;
 
   constructor(private expServ: ExperiencesService, private tokenServ: TokenService) { }
 
@@ -26,7 +28,7 @@ export class ExperienceComponent implements OnInit {
     this.roles = this.tokenServ.getAuthorities();
     if (this.roles.length) {
       this.expServ.getExp().subscribe((value: IExperience[]) => this.experience = value);
-      this.isAdmin();
+      //this.isAdmin();
     }
   }
 

@@ -51,11 +51,11 @@ export class TokenService {
 
   public logOut(): void {
     window.sessionStorage.clear();
+    //this.router.navigate(['/portfolio']);
   }
 
   public autoLogin(): void {
-    console.log("auto");
-    
+    //console.log("auto");
     let loginUser = new Login('Anonymous', 'Anonymous');
     this.authServ.logIn(loginUser).subscribe(
       (data: { token: string; userName: string; authorities: string[]; }): void => {

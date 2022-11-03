@@ -2,27 +2,27 @@
     <div class="card-titles">
         <div class="container-fluid">
             <div class="row">
-              <div class="col text-left">
-                <h2>Logros - Proyectos</h2>
-              </div>
-              <div class="col text-right">
-                <div class="btn-add">
-                    <!--<button (click)="changeState()" class="btn-right"><i class="fa fa-plus"></i></button>-->
-                    <a href="./portfolio#achiev" *ngIf="admin" class="add" (click)="add()"><i class="fa fa-plus"></i></a>
+                <div class="col text-left">
+                    <h2>Logros - Proyectos</h2>
                 </div>
-              </div>
+                <div class="col text-right">
+                    <div class="btn-add">
+                        <!--<button (click)="changeState()" class="btn-right"><i class="fa fa-plus"></i></button>-->
+                        <a href="./portfolio#achiev" *ngIf="admin" class="add" (click)="add()"><i class="fa fa-plus"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div name="form" id="achiev">
         <div *ngIf="showForm">
             <div *ngIf="outAchiev.id; else elseBlock">Modificar</div>
-                        <ng-template #elseBlock>Agregar</ng-template>
+            <ng-template #elseBlock>Agregar</ng-template>
             <app-achievements-form
                 [achievement]="outAchiev"
                 (closeForm)="changeState(false)"
                 (achievementChange)="update(outAchiev)"
-            ></app-achievements-form>
+                ></app-achievements-form>
         </div>
     </div>
     <div class="row" *ngFor="let achievement of achievements">

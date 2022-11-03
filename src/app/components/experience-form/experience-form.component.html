@@ -1,20 +1,20 @@
 <form [formGroup]="form" (ngSubmit)="onUpdate($event)">
     <label for="" >Donde:</label>
     <input type="text"
-        formControlName="donde" 
-    >
+           formControlName="donde" 
+           >
     <label for="">Rol:</label>
     <input type="text" 
-        formControlName="rol" 
-    >
+           formControlName="rol" 
+           >
     <label for="">Inicio:</label>
     <input type="date"  
-        formControlName="inicio" 
-    >
+           formControlName="inicio" 
+           >
     <label for="">Fin:</label>
     <input type="date" 
-        formControlName="fin"
-    >
+           formControlName="fin"
+           >
     <button type="submit" class="btn btn-success" >Confirmar</button>
     <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
 </form>

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IAttributes } from 'src/app/model/IAttributes';
 import { AttribService } from 'src/app/services/attrib.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -10,6 +9,9 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./intro.component.css']
 })
 export class IntroComponent implements OnInit {
+
+  @Input() admin?: boolean;
+  @Output() adminChange = new EventEmitter<boolean>();
 
   protected attributes: IAttributes = {
     id: 0, firstName: '', lastName: '', prof: '', urlImage: '', urlBack: '',
@@ -26,7 +28,7 @@ export class IntroComponent implements OnInit {
 
   private roles: string[] = [];
 
-  protected admin: boolean = false;
+  //protected admin: boolean = false;
 
   constructor(private attribServ: AttribService, private tokenServ: TokenService) { }
 
@@ -34,7 +36,7 @@ export class IntroComponent implements OnInit {
     this.roles = this.tokenServ.getAuthorities();
     if (this.roles.length) {
       this.cargar();
-      this.isAdmin();
+      //this.isAdmin();
     }
   }
 
@@ -74,6 +76,11 @@ export class IntroComponent implements OnInit {
         this.admin = true;
       }
     });
+  }
+
+  changeAdmin(admin: boolean): void {
+    
+    this.adminChange.emit(admin);
   }
 
 

@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class AuthService {
 
-  private apiURL = "http://4.246.221.228:8080/auth/";
+  private apiURL = "https://nickbau.eastus.cloudapp.azure.com:8443/auth/";
 
   constructor(private httpClient: HttpClient) { }
 

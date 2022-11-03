@@ -1,16 +1,16 @@
 <form [formGroup]="form" (ngSubmit)="onUpdate($event)">
     <label for="">Nombre:</label>
     <input type="text"
-    formControlName="nombre"
-    >
+           formControlName="nombre"
+           >
     <label for="">Descripción:</label>
     <input type="text"
-    formControlName="descripcion"
-    >
+           formControlName="descripcion"
+           >
     <label for="">URL:</label>
     <input type="text" 
-    formControlName="url"
-    >
+           formControlName="url"
+           >
     <button type="submit" class="btn btn-success" >Confirmar</button>
     <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
 </form>

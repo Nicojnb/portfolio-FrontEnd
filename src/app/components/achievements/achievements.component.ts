@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IAchievements } from 'src/app/model/IAchievements';
 import { AchievService } from 'src/app/services/achiev.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -10,6 +10,8 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class AchievementsComponent implements OnInit {
 
+  @Input() admin?: boolean;
+
   protected showForm: boolean = false;
 
   protected achievements: IAchievements[] = [];
@@ -18,7 +20,7 @@ export class AchievementsComponent implements OnInit {
 
   private roles: string[] = [];
 
-  protected admin: boolean = false;
+  //protected admin: boolean = false;
 
   constructor(private achievServ: AchievService, private tokenServ: TokenService) { }
 
@@ -26,17 +28,17 @@ export class AchievementsComponent implements OnInit {
     this.roles = this.tokenServ.getAuthorities();
     if (this.roles.length) {
       this.achievServ.getAchiev().subscribe((value: IAchievements[]) => this.achievements = value);
-      this.isAdmin();
+      //this.isAdmin();
     }
   }
-
+/*
   isAdmin(): void {
     this.roles.forEach((rol: string) => {
       if (rol === 'ROLE_ADMIN') {
         this.admin = true;
       }
     });
-  }
+  }*/
 
   changeState(value: boolean): void {
     this.showForm=value;

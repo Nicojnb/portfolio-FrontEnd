@@ -1,4 +1,8 @@
-<app-header [name]="this.attributes.firstName+' '+this.attributes.lastName" ></app-header>
+<app-header
+[name]="this.attributes.firstName+' '+this.attributes.lastName"
+[(admin)]="admin"
+(adminChange)="(changeAdmin(false))"
+></app-header>
 <div class="card mat-card" id="start">
     <div class="">
         <div id="profile-background"><img src="{{attributes.urlBack}}"></div>
@@ -12,10 +16,10 @@
             <div >
                 <div *ngIf="showForm; else elseBlock">
                     <app-intro-form
-                            [attrib]="outAttrib"
-                            (closeForm)="changeState(false)"
-                            (expChange)="update(outAttrib)"
-                    ></app-intro-form>
+                        [attrib]="outAttrib"
+                        (closeForm)="changeState(false)"
+                        (expChange)="update(outAttrib)"
+                        ></app-intro-form>
                 </div>
                 <ng-template #elseBlock>
                     <div>
@@ -28,9 +32,9 @@
                     </div>
                     <ul id="info-details">
                         <li><a href="http://www.frt.utn.edu.ar/">
-                            <img src="assets/images/logo_favicon.png">
-                            <h2>{{attributes.university}}</h2>
-                        </a></li>
+                                <img src="assets/images/logo_favicon.png">
+                                <h2>{{attributes.university}}</h2>
+                            </a></li>
                     </ul>
                 </ng-template>
             </div>
@@ -38,11 +42,12 @@
                 <button type="button" class="btn btn-primary">Tengo interés en</button>
                 <button type="button" class="btn btn-light">Añadir sección</button>
                 <button type="button" class="btn btn-light">Más</button>
+            </div>
         </div>
     </div>
+    <app-about
+        [admin]="admin"
+        [(about)]="attributes.about"
+        (aboutChange)="updateAbout()"
+        ></app-about>
 </div>
-<app-about
-    [admin]="admin"
-    [(about)]="attributes.about"
-    (aboutChange)="updateAbout()"
-></app-about>

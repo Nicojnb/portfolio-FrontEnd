@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IStudies } from 'src/app/model/IStudies';
 import { StudiesService } from 'src/app/services/studies.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -10,6 +10,8 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class StudiesComponent implements OnInit {
 
+  @Input() admin?: boolean;
+
   protected studies: IStudies[] = [];
 
   protected outStudy: IStudies = {
@@ -19,7 +21,7 @@ export class StudiesComponent implements OnInit {
 
   protected showForm: boolean = false;
 
-  protected admin: boolean = false;
+  //protected admin: boolean = false;
 
   private roles: string[] = [];
 
@@ -29,7 +31,7 @@ export class StudiesComponent implements OnInit {
     this.roles = this.tokenServ.getAuthorities();
     if (this.roles.length) {
       this.studyServ.getStudy().subscribe((value: IStudies[]) => this.studies = value);
-      this.isAdmin();
+      //this.isAdmin();
     }
   }
 

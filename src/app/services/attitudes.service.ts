@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class AttitudesService {
 
-  private apiURL = "http://4.246.221.228:8080/attitud/";
+  private apiURL = "https://nickbau.eastus.cloudapp.azure.com:8443/attitud/";
 
   constructor(private http: HttpClient) { }
 

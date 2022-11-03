@@ -21,20 +21,20 @@
                             [exp]="outExperience"
                             (closeForm)="changeState(false)"
                             (expChange)="update(outExperience)"
-                        ></app-experience-form>
+                            ></app-experience-form>
                     </div>
                 </div> 
                 <div class="row" *ngFor="let exp of experience">
                     <div class="col text-left">
-                            <p>
-                                {{exp.name}} {{exp.role}}
-                                {{exp.start}}-{{exp.end}}
-                            </p>
+                        <p>
+                            {{exp.name}} {{exp.role}}
+                            {{exp.start}}-{{exp.end}}
+                        </p>
                     </div>
                     <div class="col text-right">
                         <div class="btn-edit">
-                                <a href="./portfolio#exp" *ngIf="admin" class="btn btn-right edit" (click)="edit(exp)"><i class="fa fa-pen"></i></a>
-                                <a href="./portfolio#exp" *ngIf="admin" class="btn btn-right delete" (click)="delete(exp)"><i class="fa fa-trash"></i></a>
+                            <a href="./portfolio#exp" *ngIf="admin" class="btn btn-right edit" (click)="edit(exp)"><i class="fa fa-pen"></i></a>
+                            <a href="./portfolio#exp" *ngIf="admin" class="btn btn-right delete" (click)="delete(exp)"><i class="fa fa-trash"></i></a>
                         </div>
                     </div>
                 </div>

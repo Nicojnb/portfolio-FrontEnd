@@ -13,11 +13,24 @@ export class PortfolioComponent implements OnInit {
 
   constructor(private tokenServ: TokenService) { }
 
+  private roles!: string[];
+
+  protected admin: boolean = false;
 
   ngOnInit(): void {
-    let roles=this.tokenServ.getAuthorities();
-    if (!roles.length)
+    this.roles=this.tokenServ.getAuthorities();
+    if (!this.roles.length)
       this.tokenServ.autoLogin();
+    else 
+      this.isAdmin();
+  }
+
+  isAdmin(): void {
+    this.roles.forEach((rol: string) => {
+      if (rol === 'ROLE_ADMIN') {
+        this.admin = true;
+      }
+    });
   }
 
 }
