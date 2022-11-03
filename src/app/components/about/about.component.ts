@@ -41,9 +41,8 @@ export class AboutComponent implements OnInit {
   }
 
   onUpdate() {
-
     if(this.formGroup.get('about')?.value)
-    this.about = this.formGroup.get('about')?.value;
+      this.about = this.formGroup.get('about')?.value;
     this.aboutChange.emit(this.about);
     this.changeState(true)
   }

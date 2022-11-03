@@ -72,8 +72,4 @@ export class AchievementsComponent implements OnInit {
     })
     alert("Eliminado ☹");
   }
-
-  
-  
-
 }
